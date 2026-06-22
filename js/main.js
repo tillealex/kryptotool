@@ -1,14 +1,17 @@
 initApp();
 
-async function initApp() {
+function initApp() {
   initModePlaceholder();
   initDropdownPanels();
   initToolSelection();
 
-  const { initFreemasonView } = await import("./ui/freemasonView.js");
-  initFreemasonView();
+  if (window.KryptoTool?.ui?.initFreemasonView) {
+    window.KryptoTool.ui.initFreemasonView();
+  } else {
+    console.error("Freimaurer-Modul konnte nicht gestartet werden.");
+  }
 
-  console.info("Kryptotool gestartet: Freimaurer-Code als Modul aktiv");
+  console.info("Kryptotool gestartet: Freimaurer-Code aktiv");
 }
 
 function initModePlaceholder() {
