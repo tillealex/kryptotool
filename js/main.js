@@ -8,6 +8,7 @@ function initApp() {
   initToolSelection();
   initFreemasonEncrypt();
   initFreemasonDecryptButtons();
+  initFreemasonInversion();
   console.info("Kryptotool-Prototyp gestartet: Freimaurer-Code aktiv");
 }
 
@@ -75,6 +76,17 @@ function initFreemasonEncrypt() {
   });
 
   renderFreemasonText(input.value, output);
+}
+
+function initFreemasonInversion() {
+  const checkbox = document.querySelector("[data-invert-output]");
+  const output = document.querySelector("[data-freemason-output]");
+
+  if (!checkbox || !output) return;
+
+  checkbox.addEventListener("change", () => {
+    output.classList.toggle("is-inverted", checkbox.checked);
+  });
 }
 
 function initFreemasonDecryptButtons() {
