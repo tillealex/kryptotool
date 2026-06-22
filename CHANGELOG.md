@@ -10,9 +10,12 @@ Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 - Neues Fachmodul `js/ciphers/centaur.js` mit inline-SVG-Zeichen für A–Z und Bindestrich ergänzt.
 - Neues UI-Modul `js/ui/centaurView.js` für Ausgabe, Symboltastatur und Entschlüsselung ergänzt.
 - Verfahren-Dropdown enthält jetzt `Zentaurische Schrift` als auswählbares Werkzeug.
+- Für einfache Symbolalphabete wird im Verschlüsseln-Modus ein vierter Bereich `Alphabet als Bild` angezeigt.
+- Die Alphabet-Tafel ist wie die Symbolausgabe invertierbar: Standard weiß auf schwarz, für Ausdrucke schwarz auf weiß.
 
 ### Geändert
 
+- Zentauren-Info angepasst: `Zentaurische Schrift nach Eoin Colfers Roman "Artemis Fowl: Die Verschwörung"`.
 - Freimaurer-Code aus `js/main.js` herausgelöst.
 - Neues Fachmodul `js/ciphers/freemason.js` für Alphabet, Symbolklassen und Metadaten ergänzt.
 - Neues UI-Modul `js/ui/freemasonView.js` für Eingabe, Ausgabe, Symboltastatur, Invertierung und Buchstabenhilfen ergänzt.
@@ -25,6 +28,7 @@ Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 
 - Die Anwendung nutzt weiterhin klassische Script-Dateien über `index.html`, damit die lokale Nutzung per Doppelklick stabil bleibt.
 - Die Zentauren-Zeichen sind als inline-SVGs umgesetzt. Dadurch bleiben sie ohne zusätzliche Dateiladeprobleme lokal nutzbar.
+- Die Zentauren-SVGs sind eine erste technische Umsetzung und werden später noch genauer an die Vorlage angepasst.
 
 ## 0.2.2 - SVG-Icons und optionale Symbolhilfen
 
@@ -78,12 +82,3 @@ Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 
 - Die Umsetzung orientiert sich an der Struktur der vorhandenen Freimaurer-Alphabet-Seite.
 - Kopieren der Symbolausgabe ist noch nicht funktional angebunden.
-- Die Symbolauswahl zeigt zur besseren Bedienbarkeit aktuell noch kleine Buchstabenlabels.
-
-## 0.1.7 - Erste Geheimschrift: Freimaurer-Code
-
-### Neu
-
-- Der Freimaurer-Code wurde als erste Geheimschrift in die Oberfläche eingefügt.
-- Im Verfahren-Dropdown steht `Freimaurer-Code` nun als erster aktiver Eintrag.
-- Arbeitsbereich, Infofeld und aktuelle Einstellungen sind auf den Freimaurer-Code umgestellt.
