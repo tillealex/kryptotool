@@ -44,7 +44,9 @@ Das Projekt bündelt mehrere interaktive Kryptographie- und Geheimschriftenwerkz
 - Freimaurer-Bildausgabe kann invertiert werden.
 - Buchstabenhilfen unter den Symbolbuttons können optional eingeblendet werden.
 - Der Freimaurer-Code wurde aus `js/main.js` herausgelöst und in Module aufgeteilt.
-- `js/registry.js` ist jetzt eine echte Werkzeugliste und startet den Freimaurer-Code über eine allgemeine Werkzeug-Schnittstelle.
+- `js/registry.js` ist jetzt eine echte Werkzeugliste und startet Werkzeuge über eine allgemeine Werkzeug-Schnittstelle.
+- Zentaurische Schrift ist als zweites Symbolverfahren vorbereitet und auswählbar.
+- Zentaurische Zeichen werden als inline-SVGs in `js/ciphers/centaur.js` bereitgestellt.
 
 ---
 
@@ -68,10 +70,12 @@ kryptotool/
 │   ├── state.js
 │   ├── registry.js
 │   ├── ciphers/
-│   │   └── freemason.js
+│   │   ├── freemason.js
+│   │   └── centaur.js
 │   ├── analysis/
 │   ├── ui/
-│   │   └── freemasonView.js
+│   │   ├── freemasonView.js
+│   │   └── centaurView.js
 │   └── utils/
 ├── assets/
 │   ├── icons/
@@ -87,12 +91,14 @@ Kurze Erklärung:
 - `css/layout.css`: Raster, Seitenaufbau, responsive Struktur
 - `css/components.css`: Karten, Buttons, Navigation, Eingabe- und Ausgabefelder
 - `css/themes.css`: visuelles Design und CSS-Darstellung der Freimaurer-Symbole
-- `js/main.js`: Einstiegspunkt, koordiniert Grundinteraktionen und startet das Standardwerkzeug über die Registry
+- `js/main.js`: Einstiegspunkt, koordiniert Grundinteraktionen und startet Werkzeuge über die Registry
 - `js/app.js`: vorbereitetes Modul für spätere zentrale Anwendungslogik
 - `js/state.js`: vorbereiteter zentraler Zustand der Anwendung
-- `js/registry.js`: zentrale Werkzeugliste mit Registrierung, Abfrage und Startfunktion; enthält aktuell den Freimaurer-Code
+- `js/registry.js`: zentrale Werkzeugliste mit Registrierung, Abfrage und Startfunktion; enthält aktuell Freimaurer-Code und Zentaurische Schrift
 - `js/ciphers/freemason.js`: fachliche Freimaurer-Logik, Alphabet, Symbolklassen und Werkzeug-Metadaten
+- `js/ciphers/centaur.js`: fachliche Zentauren-Logik und inline-SVGs für die Zeichen
 - `js/ui/freemasonView.js`: DOM-Logik für Freimaurer-Eingabe, Ausgabe, Symboltastatur und Hilfseinstellungen
+- `js/ui/centaurView.js`: DOM-Logik für Zentauren-Ausgabe und Symboltastatur
 - `js/analysis/`: spätere Kryptoanalyse-Werkzeuge
 - `js/ui/`: Darstellung und Bedienoberfläche
 - `js/utils/`: Hilfsfunktionen
@@ -113,8 +119,9 @@ Kurze Erklärung:
 - Die linke Dropdown-Box bündelt Verfahren und Analysewerkzeuge.
 - Die rechte Dropdown-Box bündelt Verfahrensinfo, Schnellhilfe und aktuelle Einstellungen.
 - Freimaurer-Symbole werden weiter per HTML/CSS erzeugt; die Symbolklassen kommen aus dem Fachmodul.
+- Zentaurische Zeichen werden als inline-SVGs umgesetzt, damit sie lokal ohne zusätzliche Dateiladeprobleme funktionieren.
 - `index.html` wird vorerst nicht auf `<script type="module">` umgestellt. Stattdessen werden klassische Script-Dateien in fester Reihenfolge geladen, damit die lokale Nutzung per Doppelklick stabil bleibt.
-- Neue Werkzeuge sollen künftig über `js/registry.js` registriert werden, statt direkt in `js/main.js` gestartet zu werden.
+- Neue Werkzeuge sollen über `js/registry.js` registriert werden, statt direkt in `js/main.js` gestartet zu werden.
 
 ---
 
@@ -123,8 +130,9 @@ Kurze Erklärung:
 - Verfahren sollen nicht nur funktionieren, sondern verständlich erklärt werden können.
 - Begriffe müssen für Schülerinnen und Schüler der Sekundarstufe I nachvollziehbar sein.
 - Analysewerkzeuge sollen beim Erkennen von Mustern helfen.
-- Symbol-Geheimschriften wie Freimaurer und Gnomisch brauchen eigene Darstellungslogik.
+- Symbol-Geheimschriften wie Freimaurer, Zentaurisch und Gnomisch brauchen eigene Darstellungslogik.
 - Der Freimaurer-Code dient als erstes Muster dafür, wie weitere Verfahren modular aufgebaut werden können.
+- Die Zentaurische Schrift dient als zweites Symbolverfahren, um die Registry-Schnittstelle mit mehreren Werkzeugen zu testen.
 
 ---
 
@@ -134,7 +142,7 @@ Kurze Erklärung:
 - Caesar als erstes vollständiges Textverfahren integrieren.
 - Dropdowns später aus der Registry erzeugen oder vollständig mit Registry-Werkzeugen verbinden.
 - `app.js` und `state.js` stärker in den echten Anwendungsfluss einbinden.
-- Kopieren- und Löschen-Buttons der Freimaurer-Bildausgabe funktional anbinden.
+- Kopieren- und Löschen-Buttons der Bildausgabe funktional anbinden.
 - Dropdowns später mit echten Verfahren, Infotexten und Einstellungen verbinden.
 - Kryptoanalyse-Ansicht als eigene Darstellung ausarbeiten.
 - Gnomisch als weiteres Symbolverfahren integrieren.
@@ -145,9 +153,8 @@ Kurze Erklärung:
 
 ## Bekannte Probleme
 
-- Die Werkzeugauswahl im Dropdown ist sichtbar, aber noch nicht vollständig funktional mit der Registry verbunden.
-- Die aktuelle Registry startet nur das Standardwerkzeug `freemason`.
-- Kopieren der Freimaurer-Bildausgabe ist noch nicht funktional angebunden.
+- Beim Wechsel zwischen Werkzeugen werden bestehende Event-Listener noch nicht zentral verwaltet.
+- Kopieren der Bildausgabe ist noch nicht funktional angebunden.
 - Weitere Verfahren sind in der Oberfläche teilweise angekündigt, aber noch nicht umgesetzt.
 
 ---
@@ -158,10 +165,9 @@ Kurze Erklärung:
 - Lokale Nutzung im Browser muss stabil bleiben.
 - Keine ES-Module oder dynamischen Imports einsetzen, solange die Seite lokal per Doppelklick funktionieren soll.
 - HTML, CSS und JavaScript getrennt halten.
-- Fachlogik und UI-Logik getrennt halten.
-- Neue Verfahren über `js/registry.js` registrieren.
-- Bei größeren Änderungen `CHANGELOG.md` und `PROJECT_CONTEXT.md` aktualisieren.
-- Commit-Messages auf Englisch formulieren, Erklärung auf Deutsch.
+- Bei größeren Änderungen vollständige Dateien oder klar nachvollziehbare Patches liefern.
+- Nach größeren Änderungen `CHANGELOG.md` und `PROJECT_CONTEXT.md` aktualisieren.
+- Commit-Messages auf Englisch formulieren; Erklärung auf Deutsch.
 
 ---
 
@@ -169,14 +175,8 @@ Kurze Erklärung:
 
 ```text
 Branch:
-refactor/connect-registry-to-ui
+feature/centaur-script-svg
 
-Letzte Änderung:
-refactor: start default tool through registry
+Nächster empfohlener Schritt:
+Zentaurische Schrift lokal testen und danach die gemeinsame Werkzeug-Schnittstelle weiter stabilisieren.
 ```
-
----
-
-## Nächster empfohlener Schritt
-
-Als Nächstes sollte Caesar als erstes reines Textverfahren modular integriert werden. Dabei sollte Caesar direkt über die Registry registriert werden, damit die neue Werkzeugstruktur praktisch geprüft wird.
