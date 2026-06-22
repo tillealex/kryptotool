@@ -5,13 +5,22 @@ function initApp() {
   initDropdownPanels();
   initToolSelection();
 
-  if (window.KryptoTool?.ui?.initFreemasonView) {
-    window.KryptoTool.ui.initFreemasonView();
-  } else {
-    console.error("Freimaurer-Modul konnte nicht gestartet werden.");
+  const activeTool = startDefaultTool();
+
+  if (activeTool) {
+    console.info("Kryptotool gestartet:", activeTool.label || activeTool.id);
+  }
+}
+
+function startDefaultTool() {
+  const registry = window.KryptoTool?.registry;
+
+  if (!registry || typeof registry.initTool !== "function") {
+    console.error("Werkzeug-Registry konnte nicht gestartet werden.");
+    return null;
   }
 
-  console.info("Kryptotool gestartet: Freimaurer-Code aktiv");
+  return registry.initTool("freemason");
 }
 
 function initModePlaceholder() {
