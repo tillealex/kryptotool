@@ -2,6 +2,23 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 
+## 0.2.1 - Freimaurer-Bildausgabe invertierbar
+
+### Neu
+
+- Checkbox zum Invertieren der Freimaurer-Bildausgabe ergänzt.
+- Standard: weiße Zeichen auf schwarzem Grund.
+- Invertiert: schwarze Zeichen auf weißem Grund.
+
+### Geändert
+
+- Aufbau im Freimaurer-Bereich neu geordnet:
+  - Verfahren erklären
+  - Text eingeben beziehungsweise Symbol auswählen
+  - Ausgabe anzeigen
+- Symbolbuttons zum Entschlüsseln sind nun weiß auf schwarzem Grund gestaltet.
+- Linien der Freimaurer-Symbole wurden dicker gemacht.
+
 ## 0.2.0 - Freimaurer-Code funktional
 
 ### Neu
