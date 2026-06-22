@@ -1,3 +1,0 @@
-# Status
-
-Freimaurer-Modularisierung vorbereitet.
