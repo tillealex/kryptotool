@@ -171,6 +171,13 @@ function renderFreemasonText(text, output) {
       return;
     }
 
+    if (character === "\n") {
+      const lineBreak = document.createElement("span");
+      lineBreak.className = "freemason-line-break";
+      output.appendChild(lineBreak);
+      return;
+    }
+
     if (character === " ") {
       const space = document.createElement("span");
       space.className = "freemason-space";
