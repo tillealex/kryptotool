@@ -75,22 +75,15 @@
                 <h2>Verfahrensinfo</h2>
                 <h3>Freimaurer-Code</h3>
                 <p>Der Freimaurer-Code ist eine Symbol-Geheimschrift. Jeder Buchstabe wird nicht durch einen anderen Buchstaben ersetzt, sondern durch ein Zeichen aus Linien und Punkten.</p>
-                <p>Das Alphabet wird in mehrere kleine Gitter aufgeteilt. Die Form des Feldes und ein möglicher Punkt ergeben zusammen das Symbol.</p>
-                <div class="symbol-preview" aria-label="Beispiel Freimaurer-Code">
-                  <span class="symbol-tile">A</span>
-                  <span class="symbol-tile">B</span>
-                  <span class="symbol-tile">C</span>
-                  <span class="symbol-tile dotted">D</span>
-                </div>
+                <p>Das Alphabet wird in zwei 3×3-Gitter und zwei X-Gitter aufgeteilt. Die Form des Feldes und ein möglicher Punkt ergeben zusammen das Symbol.</p>
               </article>
 
               <article class="card help-card">
                 <h2>Schnellhilfe</h2>
                 <ol>
-                  <li>Wähle links den Freimaurer-Code.</li>
-                  <li>Gib deinen Klartext ein.</li>
-                  <li>Das Ergebnis wird später als Symbolfolge dargestellt.</li>
-                  <li>Beim Entschlüsseln wählst du die passenden Symbole zurück.</li>
+                  <li>Verschlüsseln: Text eingeben und die Symbolausgabe ablesen.</li>
+                  <li>Entschlüsseln: Symbolbuttons anklicken, um Text zu erzeugen.</li>
+                  <li>Ein Punkt unterscheidet die zweite Hälfte einer Symbolgruppe.</li>
                 </ol>
               </article>
 
@@ -117,9 +110,9 @@
           <article class="card input-card flow-card wide-text-card">
             <div class="card-heading">
               <h2>1. Klartext eingeben</h2>
-              <span>0 Zeichen</span>
+              <span data-encrypt-count>0 Zeichen</span>
             </div>
-            <textarea aria-label="Klartext eingeben" placeholder="Gib hier deinen Klartext ein …"></textarea>
+            <textarea data-freemason-input aria-label="Klartext eingeben" placeholder="Gib hier deinen Klartext ein …"></textarea>
           </article>
 
           <article class="card procedure-card flow-card">
@@ -128,7 +121,7 @@
             </div>
             <div class="selected-tool">
               <strong>Freimaurer-Code</strong>
-              <p>Die Buchstaben werden später als Freimaurer-Symbole dargestellt. Dieser Bereich ist der erste Platzhalter für eine echte Symbol-Geheimschrift.</p>
+              <p>Buchstaben werden als Linien-Symbole dargestellt. Leerzeichen erscheinen als kleiner Punkt.</p>
             </div>
             <div class="setting-row full">
               <label>Alphabet</label>
@@ -138,10 +131,10 @@
 
           <article class="card output-card flow-card wide-text-card">
             <div class="card-heading">
-              <h2>3. Symbolausgabe</h2>
-              <span>0 Zeichen</span>
+              <h2>3. Bildausgabe</h2>
+              <span>Symbolbild</span>
             </div>
-            <div class="output-placeholder symbol-output-placeholder">Hier erscheinen später die Freimaurer-Symbole …</div>
+            <div class="output-placeholder freemason-output is-empty" data-freemason-output>Hier erscheinen die Freimaurer-Symbole …</div>
             <div class="button-row">
               <button class="primary-action" type="button">Kopieren</button>
               <button class="secondary-action" type="button">Löschen</button>
@@ -152,10 +145,10 @@
         <section class="flow-panel is-hidden" data-mode-panel="decrypt">
           <article class="card input-card flow-card wide-text-card">
             <div class="card-heading">
-              <h2>1. Symbole eingeben</h2>
-              <span>0 Zeichen</span>
+              <h2>1. Symbol auswählen</h2>
+              <span>Buttons</span>
             </div>
-            <textarea aria-label="Symbole eingeben" placeholder="Gib hier später deine Freimaurer-Symbole ein …"></textarea>
+            <div class="freemason-keyboard" data-freemason-keyboard aria-label="Freimaurer-Symbolbuttons"></div>
           </article>
 
           <article class="card procedure-card flow-card">
@@ -163,8 +156,8 @@
               <h2>2. Freimaurer-Code lesen</h2>
             </div>
             <div class="selected-tool">
-              <strong>Freimaurer-Code</strong>
-              <p>Beim Entschlüsseln werden die Symbole später wieder den Buchstaben des Alphabets zugeordnet.</p>
+              <strong>Buttons zu Text</strong>
+              <p>Klicke die passenden Symbole an. Der Klartext wird unten Schritt für Schritt aufgebaut.</p>
             </div>
             <div class="setting-row full">
               <label>Alphabet</label>
@@ -175,13 +168,9 @@
           <article class="card output-card flow-card wide-text-card">
             <div class="card-heading">
               <h2>3. Klartext</h2>
-              <span>0 Zeichen</span>
+              <span data-decrypt-count>0 Zeichen</span>
             </div>
-            <div class="output-placeholder">Hier erscheint später der entschlüsselte Klartext …</div>
-            <div class="button-row">
-              <button class="primary-action" type="button">Kopieren</button>
-              <button class="secondary-action" type="button">Löschen</button>
-            </div>
+            <div class="output-placeholder decrypt-text-output" data-decrypt-output></div>
           </article>
         </section>
       </section>
@@ -189,9 +178,9 @@
 
     <footer class="station-footer">
       <span>Kryptoanalyse-Station</span>
-      <span>v0.1.7</span>
+      <span>v0.2.0</span>
       <span>Freimaurer-Code</span>
-      <span>Symbolschrift-Platzhalter</span>
+      <span>Text zu Bild / Buttons zu Text</span>
     </footer>
   </div>
 
