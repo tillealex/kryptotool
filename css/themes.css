@@ -4,10 +4,59 @@
   Ziel: dunkle, technische Oberfläche mit klarer Orientierung für Nutzer ohne Vorwissen.
 
   Leitidee:
-  - Links: Verfahren und Analysewerkzeuge.
   - Oben: Hauptbereiche.
-  - Mitte: Eingabe, Einstellungen, Ausgabe.
-  - Rechts: Erklärung, Schnellhilfe, aktuelle Einstellungen.
+  - Darunter: kompakte Dropdowns für Verfahren und Infos.
+  - Mitte: breite Eingabe, Einstellungen, breite Ausgabe.
+  - Geöffnete Dropdowns liegen als Overlay über dem Arbeitsbereich.
 
-  Diese Datei bleibt vorerst als Sammelort für spätere Designvarianten frei.
+  Alternative Layout-Idee:
+  - Breite Drei-Spalten-Ansicht mit dauerhaft sichtbaren Seitenleisten.
 */
+
+.selected-tool {
+  border: 1px solid rgba(83, 255, 145, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(83, 255, 145, 0.07);
+}
+
+.selected-tool strong {
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.selected-tool p {
+  margin: 0.45rem 0 0;
+}
+
+.symbol-output-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.symbol-preview {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.symbol-tile {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(83, 255, 145, 0.35);
+  border-radius: 10px;
+  background: rgba(83, 255, 145, 0.08);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-weight: 800;
+}
+
+.symbol-tile.dotted::after {
+  content: "•";
+  margin-left: 0.15rem;
+  color: var(--accent-2);
+}
