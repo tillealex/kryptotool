@@ -35,9 +35,15 @@ Das Projekt bündelt mehrere interaktive Kryptographie- und Geheimschriftenwerkz
 - Repository ist angelegt.
 - Grundstruktur für eine modulare Webanwendung wurde vorbereitet.
 - Ordner `Dateivorlagen` dient als Sammelort für bisherige Einzeltools, bevor sie in die neue Struktur überführt werden.
-- Ein kompakter statischer Layout-Prototyp der Kryptoanalyse-Station wurde in `index.html` umgesetzt.
-- Die Oberfläche besitzt noch keine echte Verschlüsselungs-, Entschlüsselungs- oder Analysefunktion.
-- Dropdown-Bereiche für Verfahren und Infos sind als Layout- und Bedienplatzhalter vorhanden.
+- Die Kryptoanalyse-Station besitzt ein dunkles, technisches Unterrichtsdesign.
+- Dropdown-Bereiche für Verfahren und Infos sind vorhanden.
+- Umschaltung zwischen `Verschlüsseln` und `Entschlüsseln` funktioniert.
+- Freimaurer-Code ist als erstes nutzbares Verfahren umgesetzt.
+- Verschlüsseln: Texteingabe wird direkt in Freimaurer-Symbole umgewandelt.
+- Entschlüsseln: Symbolbuttons erzeugen Klartext.
+- Freimaurer-Bildausgabe kann invertiert werden.
+- Buchstabenhilfen unter den Symbolbuttons können optional eingeblendet werden.
+- Der Freimaurer-Code wurde aus `js/main.js` herausgelöst und in Module aufgeteilt.
 
 ---
 
@@ -61,8 +67,10 @@ kryptotool/
 │   ├── state.js
 │   ├── registry.js
 │   ├── ciphers/
+│   │   └── freemason.js
 │   ├── analysis/
 │   ├── ui/
+│   │   └── freemasonView.js
 │   └── utils/
 ├── assets/
 │   ├── icons/
@@ -73,17 +81,18 @@ kryptotool/
 
 Kurze Erklärung:
 
-- `index.html`: Startpunkt der Anwendung und aktueller Layout-Prototyp
+- `index.html`: Startpunkt der Anwendung und aktuelle Arbeitsoberfläche
 - `css/global.css`: globale Variablen, Grundfarben, Typografie und Hintergrund
 - `css/layout.css`: Raster, Seitenaufbau, responsive Struktur
 - `css/components.css`: Karten, Buttons, Navigation, Eingabe- und Ausgabefelder
-- `css/themes.css`: Notizen und spätere Varianten für das visuelle Design
-- `js/main.js`: Einstiegspunkt der späteren Anwendung
-- `js/app.js`: verbindet später Zustand, Oberfläche und Module
-- `js/state.js`: zentraler Zustand der Anwendung
-- `js/registry.js`: Registrierung der verfügbaren Geheimschriften und Analysewerkzeuge
-- `js/ciphers/`: einzelne Verschlüsselungsverfahren
-- `js/analysis/`: Kryptoanalyse-Werkzeuge
+- `css/themes.css`: visuelles Design und CSS-Darstellung der Freimaurer-Symbole
+- `js/main.js`: Einstiegspunkt, koordiniert Grundinteraktionen und lädt das Freimaurer-UI dynamisch
+- `js/app.js`: vorbereitetes Modul für spätere zentrale Anwendungslogik
+- `js/state.js`: vorbereiteter zentraler Zustand der Anwendung
+- `js/registry.js`: Registrierung verfügbarer Geheimschriften und Analysewerkzeuge; enthält aktuell den Freimaurer-Code
+- `js/ciphers/freemason.js`: fachliche Freimaurer-Logik, Alphabet, Symbolklassen und Werkzeug-Metadaten
+- `js/ui/freemasonView.js`: DOM-Logik für Freimaurer-Eingabe, Ausgabe, Symboltastatur und Hilfseinstellungen
+- `js/analysis/`: spätere Kryptoanalyse-Werkzeuge
 - `js/ui/`: Darstellung und Bedienoberfläche
 - `js/utils/`: Hilfsfunktionen
 - `Dateivorlagen/`: Ablage für bisherige Kryptotools als Ausgangsmaterial
@@ -102,10 +111,8 @@ Kurze Erklärung:
 - Die Hauptorientierung erfolgt aktuell über die beiden großen Bereiche `Verschlüsseln` und `Entschlüsseln`.
 - Die linke Dropdown-Box bündelt Verfahren und Analysewerkzeuge.
 - Die rechte Dropdown-Box bündelt Verfahrensinfo, Schnellhilfe und aktuelle Einstellungen.
-- Der zentrale Arbeitsbereich folgt der Reihenfolge: Texteingabe → Einstellungen → Ausgabe.
-- Die kompakte Dropdown-Variante nach den unteren drei Mockup-Bildern ist die aktuelle bevorzugte Layout-Richtung.
-- Die breite Drei-Spalten-Variante aus dem oberen Mockup bleibt als alternative Layout-Idee erhalten, falls später ein Dashboard für große Bildschirme gebraucht wird.
-- Bei schmaleren Browserfenstern sollen Verfahren, Arbeitsbereich und Infos untereinander angeordnet werden.
+- Freimaurer-Symbole werden weiter per HTML/CSS erzeugt; die Symbolklassen kommen aus dem Fachmodul.
+- `index.html` wird vorerst nicht auf `<script type="module">` umgestellt. Stattdessen lädt `js/main.js` das Freimaurer-UI-Modul dynamisch nach, damit die bestehende HTML-Struktur unverändert bleibt.
 
 ---
 
@@ -115,20 +122,19 @@ Kurze Erklärung:
 - Begriffe müssen für Schülerinnen und Schüler der Sekundarstufe I nachvollziehbar sein.
 - Analysewerkzeuge sollen beim Erkennen von Mustern helfen.
 - Symbol-Geheimschriften wie Freimaurer und Gnomisch brauchen eigene Darstellungslogik.
+- Der Freimaurer-Code dient als erstes Muster dafür, wie weitere Verfahren modular aufgebaut werden können.
 
 ---
 
 ## Offene Aufgaben
 
-- Layout-Prototyp im Browser prüfen und Designentscheidungen überarbeiten.
-- Bisherige Einzeltools in `Dateivorlagen` sammeln.
-- Bestehende Tools analysieren und in Module überführen.
 - Modulschnittstelle für Verfahren endgültig festlegen.
-- Caesar als erstes vollständiges Modul integrieren.
-- Umschaltung zwischen Verschlüsseln und Entschlüsseln funktional machen.
-- Kryptoanalyse-Ansicht als eigene Darstellung ausarbeiten.
+- Caesar als erstes vollständiges Textverfahren integrieren.
+- `app.js`, `state.js` und `registry.js` stärker in den echten Anwendungsfluss einbinden.
+- Kopieren- und Löschen-Buttons der Freimaurer-Bildausgabe funktional anbinden.
 - Dropdowns später mit echten Verfahren, Infotexten und Einstellungen verbinden.
-- Symbolausgabe für Freimaurer und Gnomisch planen.
+- Kryptoanalyse-Ansicht als eigene Darstellung ausarbeiten.
+- Gnomisch als weiteres Symbolverfahren integrieren.
 - Häufigkeitsanalyse als erstes Analysewerkzeug umsetzen.
 - GitHub Pages vorbereiten.
 
@@ -136,11 +142,11 @@ Kurze Erklärung:
 
 ## Bekannte Probleme
 
-- Noch keine eigentliche Anwendung implementiert.
-- Noch keine bestehenden Tools integriert.
-- Modulschnittstellen sind geplant, aber noch nicht endgültig festgelegt.
-- Der aktuelle Prototyp ist noch statisch und dient nur der Layoutbewertung.
-- Mobile Darstellung muss nach dem ersten Browsertest geprüft werden.
+- `app.js` und `state.js` sind vorbereitet, aber noch nicht produktiv eingebunden.
+- Die Verfahrensauswahl im Dropdown ist bisher optisch aktivierbar, schaltet aber noch nicht zwischen echten Werkzeugen um.
+- Kopieren der Symbolausgabe ist noch nicht funktional angebunden.
+- Mobile Darstellung muss weiter geprüft werden.
+- Die Modulschnittstelle ist durch Freimaurer vorbereitet, aber noch nicht endgültig für alle Verfahren vereinheitlicht.
 
 ---
 
@@ -162,17 +168,17 @@ Kurze Erklärung:
 Branch:
 
 ```text
-main
+refactor/extract-freemason-module
 ```
 
 Letzter empfohlener Commit:
 
 ```text
-style: implement compact dropdown layout prototype
+refactor: extract freemason cipher into module
 ```
 
 ---
 
 ## Nächster empfohlener Schritt
 
-Den kompakten Dropdown-Prototyp im Browser prüfen. Besonders wichtig sind: Aufgleit-Animation, Spaltenbreiten, Lesbarkeit der Dropdowns, zentrale Ruhe der Arbeitsfläche und responsive Anordnung bei schmaleren Browserfenstern.
+Als Nächstes sollte die Freimaurer-Funktion im Browser geprüft werden. Danach ist Caesar als erstes Textverfahren sinnvoll, weil damit die Modulschnittstelle für einfache Buchstabenverschiebungen getestet werden kann.
