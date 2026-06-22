@@ -2,6 +2,27 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 
+## 0.2.0 - Freimaurer-Code funktional
+
+### Neu
+
+- Freimaurer-Code als erste tatsächlich nutzbare Geheimschrift umgesetzt.
+- Verschlüsseln: Texteingabe wird direkt in eine Symbolausgabe umgewandelt.
+- Entschlüsseln: Symbolbuttons erzeugen Klartext.
+- Freimaurer-Symbole werden mit HTML/CSS gezeichnet.
+- Leerzeichen werden in der Symbolausgabe als kleiner Punkt dargestellt.
+
+### Geändert
+
+- Der bisherige Symbolschrift-Platzhalter wurde durch eine erste funktionale Umsetzung ersetzt.
+- Die Entschlüsseln-Ansicht besitzt nun eine Symboltastatur.
+
+### Hinweis
+
+- Die Umsetzung orientiert sich an der Struktur der vorhandenen Freimaurer-Alphabet-Seite.
+- Kopieren der Symbolausgabe ist noch nicht funktional angebunden.
+- Die Symbolauswahl zeigt zur besseren Bedienbarkeit aktuell noch kleine Buchstabenlabels.
+
 ## 0.1.7 - Erste Geheimschrift: Freimaurer-Code
 
 ### Neu
