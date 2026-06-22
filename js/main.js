@@ -61,22 +61,37 @@ function initDropdownPanels() {
   });
 }
 
+function closeDropdownPanels() {
+  document.querySelectorAll(".side-dropdown.is-open").forEach((dropdown) => {
+    dropdown.classList.remove("is-open");
+
+    const trigger = dropdown.querySelector("[data-dropdown-trigger]");
+    trigger?.setAttribute("aria-expanded", "false");
+
+    const arrow = trigger?.querySelector(".dropdown-arrow");
+    if (arrow) {
+      arrow.textContent = "⌄";
+    }
+  });
+}
+
 function initToolSelection() {
   const registry = window.KryptoTool?.registry;
   const toolButtons = document.querySelectorAll(".tool-link");
 
   toolButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      toolButtons.forEach((toolButton) => toolButton.classList.remove("is-active"));
-      button.classList.add("is-active");
-
       const toolId = button.dataset.tool;
       if (!toolId) return;
 
       const activeTool = registry?.initTool(toolId);
-      if (activeTool) {
-        console.info("Werkzeug gewechselt:", activeTool.label || activeTool.id);
-      }
+      if (!activeTool) return;
+
+      toolButtons.forEach((toolButton) => toolButton.classList.remove("is-active"));
+      button.classList.add("is-active");
+      closeDropdownPanels();
+
+      console.info("Werkzeug gewechselt:", activeTool.label || activeTool.id);
     });
   });
 }
