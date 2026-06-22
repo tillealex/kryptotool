@@ -35,8 +35,9 @@ Das Projekt bündelt mehrere interaktive Kryptographie- und Geheimschriftenwerkz
 - Repository ist angelegt.
 - Grundstruktur für eine modulare Webanwendung wurde vorbereitet.
 - Ordner `Dateivorlagen` dient als Sammelort für bisherige Einzeltools, bevor sie in die neue Struktur überführt werden.
-- Ein statischer Layout-Prototyp der Kryptoanalyse-Station wurde in `index.html` umgesetzt.
+- Ein kompakter statischer Layout-Prototyp der Kryptoanalyse-Station wurde in `index.html` umgesetzt.
 - Die Oberfläche besitzt noch keine echte Verschlüsselungs-, Entschlüsselungs- oder Analysefunktion.
+- Dropdown-Bereiche für Verfahren und Infos sind als Layout- und Bedienplatzhalter vorhanden.
 
 ---
 
@@ -98,10 +99,13 @@ Kurze Erklärung:
 - Die Oberfläche soll für den Unterricht klar, ruhig und gut lesbar sein.
 - Das gewählte Design orientiert sich an einer dunklen, technischen Kryptoanalyse-Station.
 - Nutzer ohne technische Vorerfahrung sollen die Seite schnell erfassen können.
-- Die Hauptorientierung erfolgt über zwei große Bereiche: `Verschlüsseln / Entschlüsseln` und `Kryptoanalyse`.
-- Die linke Seitenleiste bündelt Verfahren und Analysewerkzeuge.
+- Die Hauptorientierung erfolgt aktuell über die beiden großen Bereiche `Verschlüsseln` und `Entschlüsseln`.
+- Die linke Dropdown-Box bündelt Verfahren und Analysewerkzeuge.
+- Die rechte Dropdown-Box bündelt Verfahrensinfo, Schnellhilfe und aktuelle Einstellungen.
 - Der zentrale Arbeitsbereich folgt der Reihenfolge: Texteingabe → Einstellungen → Ausgabe.
-- Die rechte Spalte erklärt das gewählte Verfahren und bietet Schnellhilfe.
+- Die kompakte Dropdown-Variante nach den unteren drei Mockup-Bildern ist die aktuelle bevorzugte Layout-Richtung.
+- Die breite Drei-Spalten-Variante aus dem oberen Mockup bleibt als alternative Layout-Idee erhalten, falls später ein Dashboard für große Bildschirme gebraucht wird.
+- Bei schmaleren Browserfenstern sollen Verfahren, Arbeitsbereich und Infos untereinander angeordnet werden.
 
 ---
 
@@ -123,6 +127,7 @@ Kurze Erklärung:
 - Caesar als erstes vollständiges Modul integrieren.
 - Umschaltung zwischen Verschlüsseln und Entschlüsseln funktional machen.
 - Kryptoanalyse-Ansicht als eigene Darstellung ausarbeiten.
+- Dropdowns später mit echten Verfahren, Infotexten und Einstellungen verbinden.
 - Symbolausgabe für Freimaurer und Gnomisch planen.
 - Häufigkeitsanalyse als erstes Analysewerkzeug umsetzen.
 - GitHub Pages vorbereiten.
@@ -163,11 +168,11 @@ main
 Letzter empfohlener Commit:
 
 ```text
-style: add dark crypto station layout prototype
+style: implement compact dropdown layout prototype
 ```
 
 ---
 
 ## Nächster empfohlener Schritt
 
-Den Layout-Prototyp im Browser prüfen. Danach sollten Farben, Abstände, Schriftgrößen, Bedienführung und mobile Darstellung bewertet werden, bevor echte Funktionen integriert werden.
+Den kompakten Dropdown-Prototyp im Browser prüfen. Besonders wichtig sind: Aufgleit-Animation, Spaltenbreiten, Lesbarkeit der Dropdowns, zentrale Ruhe der Arbeitsfläche und responsive Anordnung bei schmaleren Browserfenstern.
