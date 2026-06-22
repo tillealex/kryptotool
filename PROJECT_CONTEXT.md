@@ -44,6 +44,7 @@ Das Projekt bündelt mehrere interaktive Kryptographie- und Geheimschriftenwerkz
 - Freimaurer-Bildausgabe kann invertiert werden.
 - Buchstabenhilfen unter den Symbolbuttons können optional eingeblendet werden.
 - Der Freimaurer-Code wurde aus `js/main.js` herausgelöst und in Module aufgeteilt.
+- `js/registry.js` ist jetzt eine echte Werkzeugliste und startet den Freimaurer-Code über eine allgemeine Werkzeug-Schnittstelle.
 
 ---
 
@@ -86,10 +87,10 @@ Kurze Erklärung:
 - `css/layout.css`: Raster, Seitenaufbau, responsive Struktur
 - `css/components.css`: Karten, Buttons, Navigation, Eingabe- und Ausgabefelder
 - `css/themes.css`: visuelles Design und CSS-Darstellung der Freimaurer-Symbole
-- `js/main.js`: Einstiegspunkt, koordiniert Grundinteraktionen und lädt das Freimaurer-UI dynamisch
+- `js/main.js`: Einstiegspunkt, koordiniert Grundinteraktionen und startet das Standardwerkzeug über die Registry
 - `js/app.js`: vorbereitetes Modul für spätere zentrale Anwendungslogik
 - `js/state.js`: vorbereiteter zentraler Zustand der Anwendung
-- `js/registry.js`: Registrierung verfügbarer Geheimschriften und Analysewerkzeuge; enthält aktuell den Freimaurer-Code
+- `js/registry.js`: zentrale Werkzeugliste mit Registrierung, Abfrage und Startfunktion; enthält aktuell den Freimaurer-Code
 - `js/ciphers/freemason.js`: fachliche Freimaurer-Logik, Alphabet, Symbolklassen und Werkzeug-Metadaten
 - `js/ui/freemasonView.js`: DOM-Logik für Freimaurer-Eingabe, Ausgabe, Symboltastatur und Hilfseinstellungen
 - `js/analysis/`: spätere Kryptoanalyse-Werkzeuge
@@ -112,7 +113,8 @@ Kurze Erklärung:
 - Die linke Dropdown-Box bündelt Verfahren und Analysewerkzeuge.
 - Die rechte Dropdown-Box bündelt Verfahrensinfo, Schnellhilfe und aktuelle Einstellungen.
 - Freimaurer-Symbole werden weiter per HTML/CSS erzeugt; die Symbolklassen kommen aus dem Fachmodul.
-- `index.html` wird vorerst nicht auf `<script type="module">` umgestellt. Stattdessen lädt `js/main.js` das Freimaurer-UI-Modul dynamisch nach, damit die bestehende HTML-Struktur unverändert bleibt.
+- `index.html` wird vorerst nicht auf `<script type="module">` umgestellt. Stattdessen werden klassische Script-Dateien in fester Reihenfolge geladen, damit die lokale Nutzung per Doppelklick stabil bleibt.
+- Neue Werkzeuge sollen künftig über `js/registry.js` registriert werden, statt direkt in `js/main.js` gestartet zu werden.
 
 ---
 
@@ -130,7 +132,8 @@ Kurze Erklärung:
 
 - Modulschnittstelle für Verfahren endgültig festlegen.
 - Caesar als erstes vollständiges Textverfahren integrieren.
-- `app.js`, `state.js` und `registry.js` stärker in den echten Anwendungsfluss einbinden.
+- Dropdowns später aus der Registry erzeugen oder vollständig mit Registry-Werkzeugen verbinden.
+- `app.js` und `state.js` stärker in den echten Anwendungsfluss einbinden.
 - Kopieren- und Löschen-Buttons der Freimaurer-Bildausgabe funktional anbinden.
 - Dropdowns später mit echten Verfahren, Infotexten und Einstellungen verbinden.
 - Kryptoanalyse-Ansicht als eigene Darstellung ausarbeiten.
@@ -142,43 +145,38 @@ Kurze Erklärung:
 
 ## Bekannte Probleme
 
-- `app.js` und `state.js` sind vorbereitet, aber noch nicht produktiv eingebunden.
-- Die Verfahrensauswahl im Dropdown ist bisher optisch aktivierbar, schaltet aber noch nicht zwischen echten Werkzeugen um.
-- Kopieren der Symbolausgabe ist noch nicht funktional angebunden.
-- Mobile Darstellung muss weiter geprüft werden.
-- Die Modulschnittstelle ist durch Freimaurer vorbereitet, aber noch nicht endgültig für alle Verfahren vereinheitlicht.
+- Die Werkzeugauswahl im Dropdown ist sichtbar, aber noch nicht vollständig funktional mit der Registry verbunden.
+- Die aktuelle Registry startet nur das Standardwerkzeug `freemason`.
+- Kopieren der Freimaurer-Bildausgabe ist noch nicht funktional angebunden.
+- Weitere Verfahren sind in der Oberfläche teilweise angekündigt, aber noch nicht umgesetzt.
 
 ---
 
 ## Arbeitsregeln für WILFRIED
 
-- Projektstand immer aus Repository-Dateien ableiten.
-- Keine bestehenden Tools überschreiben, bevor sie analysiert wurden.
-- Alte Tools zunächst in `Dateivorlagen` sammeln.
-- Bei größeren Änderungen `PROJECT_CONTEXT.md` und `CHANGELOG.md` aktualisieren.
-- HTML, CSS und JavaScript sauber trennen.
-- Neue Funktionen möglichst modular anlegen.
-- Commit-Messages auf Englisch formulieren.
-- Designänderungen zuerst als statische Prototypen prüfen, bevor Funktionen eingebaut werden.
+- Keine unnötigen Frameworks verwenden.
+- Lokale Nutzung im Browser muss stabil bleiben.
+- Keine ES-Module oder dynamischen Imports einsetzen, solange die Seite lokal per Doppelklick funktionieren soll.
+- HTML, CSS und JavaScript getrennt halten.
+- Fachlogik und UI-Logik getrennt halten.
+- Neue Verfahren über `js/registry.js` registrieren.
+- Bei größeren Änderungen `CHANGELOG.md` und `PROJECT_CONTEXT.md` aktualisieren.
+- Commit-Messages auf Englisch formulieren, Erklärung auf Deutsch.
 
 ---
 
 ## Letzter sinnvoller Git-Stand
 
+```text
 Branch:
+refactor/connect-registry-to-ui
 
-```text
-refactor/extract-freemason-module
-```
-
-Letzter empfohlener Commit:
-
-```text
-refactor: extract freemason cipher into module
+Letzte Änderung:
+refactor: start default tool through registry
 ```
 
 ---
 
 ## Nächster empfohlener Schritt
 
-Als Nächstes sollte die Freimaurer-Funktion im Browser geprüft werden. Danach ist Caesar als erstes Textverfahren sinnvoll, weil damit die Modulschnittstelle für einfache Buchstabenverschiebungen getestet werden kann.
+Als Nächstes sollte Caesar als erstes reines Textverfahren modular integriert werden. Dabei sollte Caesar direkt über die Registry registriert werden, damit die neue Werkzeugstruktur praktisch geprüft wird.

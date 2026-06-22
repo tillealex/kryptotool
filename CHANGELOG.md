@@ -10,11 +10,12 @@ Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 - Neues Fachmodul `js/ciphers/freemason.js` für Alphabet, Symbolklassen und Metadaten ergänzt.
 - Neues UI-Modul `js/ui/freemasonView.js` für Eingabe, Ausgabe, Symboltastatur, Invertierung und Buchstabenhilfen ergänzt.
 - `js/main.js` ist wieder stärker Einstiegspunkt und Koordinator der Oberfläche.
-- `js/registry.js` registriert den Freimaurer-Code erstmals als Werkzeug-Metadatum.
+- `js/registry.js` ist jetzt eine echte Werkzeugliste mit Registrierung, Abfrage und Startfunktion für Werkzeuge.
+- `js/main.js` startet das aktive Werkzeug nun über die Registry statt direkt über die Freimaurer-UI.
 
 ### Hinweis
 
-- Die bestehende `index.html` bleibt unverändert und lädt `js/main.js` weiterhin als klassisches Script. `main.js` lädt das Freimaurer-UI-Modul dynamisch nach.
+- Die Anwendung nutzt weiterhin klassische Script-Dateien über `index.html`, damit die lokale Nutzung per Doppelklick stabil bleibt.
 
 ## 0.2.2 - SVG-Icons und optionale Symbolhilfen
 
