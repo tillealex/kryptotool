@@ -62,12 +62,21 @@ function initDropdownPanels() {
 }
 
 function initToolSelection() {
+  const registry = window.KryptoTool?.registry;
   const toolButtons = document.querySelectorAll(".tool-link");
 
   toolButtons.forEach((button) => {
     button.addEventListener("click", () => {
       toolButtons.forEach((toolButton) => toolButton.classList.remove("is-active"));
       button.classList.add("is-active");
+
+      const toolId = button.dataset.tool;
+      if (!toolId) return;
+
+      const activeTool = registry?.initTool(toolId);
+      if (activeTool) {
+        console.info("Werkzeug gewechselt:", activeTool.label || activeTool.id);
+      }
     });
   });
 }
