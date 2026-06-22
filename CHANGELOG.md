@@ -2,6 +2,29 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 
+## 0.1.3 - Dropdown-Prototyp für Verfahren und Infos
+
+### Neu
+
+- Linkes Verfahren-Menü wurde von Hover-Menü auf klickbares Dropdown umgebaut.
+- Im Grundzustand ist links nur der Button `Verfahren` sichtbar.
+- Rechts wurde ein klickbares Dropdown `Infos` ergänzt.
+- Beim Öffnen des Info-Dropdowns erscheinen:
+  - Verfahrensinfo
+  - Schnellhilfe
+  - aktuelle Einstellungen
+- Beide Dropdown-Bereiche öffnen sich mit fließender Animation.
+
+### Geändert
+
+- Rechte Infoboxen sind nicht mehr dauerhaft sichtbar und überladen dadurch den Arbeitsbereich nicht.
+- Der zentrale Arbeitsbereich bleibt weiterhin ruhig und fokussiert.
+
+### Hinweis
+
+- Dropdowns sind bisher reine Layout- und Bedienplatzhalter.
+- Die eigentlichen Verfahren und Infotexte werden später dynamisch mit den ausgewählten Modulen verbunden.
+
 ## 0.1.2 - Vereinfachter Layout-Prototyp
 
 ### Neu
