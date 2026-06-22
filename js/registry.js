@@ -1,7 +1,10 @@
-import { FREEMASON_CIPHER } from "./ciphers/freemason.js";
+window.KryptoTool = window.KryptoTool || {};
 
-const REGISTERED_TOOLS = [FREEMASON_CIPHER];
-
-export function getRegisteredTools() {
-  return REGISTERED_TOOLS;
+function getRegisteredTools() {
+  const freemasonCipher = window.KryptoTool?.ciphers?.freemason?.FREEMASON_CIPHER;
+  return freemasonCipher ? [freemasonCipher] : [];
 }
+
+window.KryptoTool.registry = {
+  getRegisteredTools,
+};
