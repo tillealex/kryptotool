@@ -1,16 +1,11 @@
 /*
   Design-Prototyp: Kryptoanalyse-Station
   ---------------------------------------
-  Ziel: dunkle, technische Oberfläche mit klarer Orientierung für Nutzer ohne Vorwissen.
-
-  Leitidee:
+  Aktuelle Leitidee:
   - Oben: Hauptbereiche.
   - Darunter: kompakte Dropdowns für Verfahren und Infos.
   - Mitte: breite Eingabe, Einstellungen, breite Ausgabe.
   - Geöffnete Dropdowns liegen als Overlay über dem Arbeitsbereich.
-
-  Alternative Layout-Idee:
-  - Breite Drei-Spalten-Ansicht mit dauerhaft sichtbaren Seitenleisten.
 */
 
 .selected-tool {
@@ -29,34 +24,138 @@
   margin: 0.45rem 0 0;
 }
 
-.symbol-output-placeholder {
+.freemason-output,
+.freemason-keyboard {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-}
-
-.symbol-preview {
-  display: flex;
-  gap: 0.45rem;
+  align-content: flex-start;
+  gap: 0.75rem;
   flex-wrap: wrap;
-  margin-top: 1rem;
 }
 
-.symbol-tile {
+.freemason-output.is-empty {
+  display: block;
+}
+
+.freemason-symbol {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+}
+
+.freemason-symbol.grid {
+  border-color: var(--accent);
+  border-style: solid;
+  border-width: 0;
+}
+
+.freemason-symbol.grid-0 { border-right-width: 3px; border-bottom-width: 3px; }
+.freemason-symbol.grid-1 { border-left-width: 3px; border-right-width: 3px; border-bottom-width: 3px; }
+.freemason-symbol.grid-2 { border-left-width: 3px; border-bottom-width: 3px; }
+.freemason-symbol.grid-3 { border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; }
+.freemason-symbol.grid-4 { border-width: 3px; }
+.freemason-symbol.grid-5 { border-top-width: 3px; border-left-width: 3px; border-bottom-width: 3px; }
+.freemason-symbol.grid-6 { border-top-width: 3px; border-right-width: 3px; }
+.freemason-symbol.grid-7 { border-top-width: 3px; border-left-width: 3px; border-right-width: 3px; }
+.freemason-symbol.grid-8 { border-top-width: 3px; border-left-width: 3px; }
+
+.freemason-symbol.dotted::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(41, 216, 255, 0.45);
+}
+
+.freemason-symbol.x::before,
+.freemason-symbol.x::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3px;
+  height: 64px;
+  border-radius: 99px;
+  background: var(--accent);
+  transform-origin: center;
+}
+
+.freemason-symbol.x::before { transform: translate(-50%, -50%) rotate(45deg); }
+.freemason-symbol.x::after { transform: translate(-50%, -50%) rotate(-45deg); }
+
+.freemason-symbol.x-0 { clip-path: polygon(0 0, 50% 50%, 0 100%); }
+.freemason-symbol.x-1 { clip-path: polygon(0 0, 100% 0, 50% 50%); }
+.freemason-symbol.x-2 { clip-path: polygon(100% 0, 50% 50%, 100% 100%); }
+.freemason-symbol.x-3 { clip-path: polygon(0 100%, 50% 50%, 100% 100%); }
+
+.freemason-space,
+.freemason-unknown {
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  height: 46px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 1.3rem;
+}
+
+.freemason-keyboard {
+  min-height: 210px;
+  padding: 1rem;
+  border: 1px solid rgba(105, 130, 160, 0.32);
+  border-radius: 12px;
+  background: rgba(9, 17, 27, 0.92);
+}
+
+.freemason-button {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(83, 255, 145, 0.35);
-  border-radius: 10px;
-  background: rgba(83, 255, 145, 0.08);
-  color: var(--accent);
-  font-family: var(--mono);
-  font-weight: 800;
+  gap: 0.35rem;
+  min-width: 72px;
+  min-height: 82px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(5, 11, 18, 0.92);
+  color: var(--text);
+  cursor: pointer;
 }
 
-.symbol-tile.dotted::after {
-  content: "•";
-  margin-left: 0.15rem;
-  color: var(--accent-2);
+.freemason-button:hover {
+  border-color: var(--line-strong);
+  background: var(--accent-soft);
+}
+
+.freemason-button .freemason-symbol {
+  width: 34px;
+  height: 34px;
+}
+
+.freemason-button .freemason-symbol.x::before,
+.freemason-button .freemason-symbol.x::after {
+  height: 48px;
+}
+
+.freemason-button-label {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.freemason-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.85rem;
+}
+
+.decrypt-text-output:empty::before {
+  content: "Hier entsteht der entschlüsselte Text …";
+  color: rgba(146, 160, 179, 0.72);
 }
