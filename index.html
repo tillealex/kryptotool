@@ -21,138 +21,147 @@
       <nav class="header-actions" aria-label="Zusatznavigation">
         <button type="button">Hilfe</button>
         <button type="button">Info</button>
-        <button type="button">Einstellungen</button>
       </nav>
     </header>
 
+    <nav class="main-tabs" role="tablist" aria-label="Hauptbereiche">
+      <button class="main-tab is-active" type="button">Verschlüsseln / Entschlüsseln</button>
+      <button class="main-tab" type="button">Kryptoanalyse</button>
+    </nav>
+
     <main class="station-frame">
       <aside class="sidebar" aria-label="Verfahren und Werkzeuge">
-        <div class="sidebar-title">Verfahren</div>
+        <div class="sidebar-rail" aria-hidden="true">
+          <span>☰</span>
+          <small>Verfahren</small>
+        </div>
 
-        <section class="nav-group">
-          <h2>Textgeheimschriften</h2>
-          <button class="tool-link is-active" type="button"><span>Caesar</span></button>
-          <button class="tool-link" type="button"><span>Vigenère</span></button>
-          <button class="tool-link" type="button"><span>Substitution</span></button>
-        </section>
+        <div class="sidebar-content">
+          <div class="sidebar-title">Verfahren wählen</div>
 
-        <section class="nav-group">
-          <h2>Symbolgeheimschriften</h2>
-          <button class="tool-link" type="button"><span>Freimaurer</span></button>
-          <button class="tool-link" type="button"><span>Gnomisch</span></button>
-          <button class="tool-link" type="button"><span>Polybius</span></button>
-        </section>
+          <section class="nav-group">
+            <h2>Textgeheimschriften</h2>
+            <button class="tool-link is-active" type="button"><span>Caesar</span></button>
+            <button class="tool-link" type="button"><span>Vigenère</span></button>
+            <button class="tool-link" type="button"><span>Substitution</span></button>
+          </section>
 
-        <section class="nav-group">
-          <h2>Analysewerkzeuge</h2>
-          <button class="tool-link" type="button"><span>Häufigkeitsanalyse</span></button>
-          <button class="tool-link" type="button"><span>Caesar-Knacker</span></button>
-          <button class="tool-link" type="button"><span>Kryptoanalyse</span></button>
-        </section>
+          <section class="nav-group">
+            <h2>Symbolgeheimschriften</h2>
+            <button class="tool-link" type="button"><span>Freimaurer</span></button>
+            <button class="tool-link" type="button"><span>Gnomisch</span></button>
+            <button class="tool-link" type="button"><span>Polybius</span></button>
+          </section>
 
-        <button class="back-button" type="button">Zurück zur Startseite</button>
+          <section class="nav-group">
+            <h2>Analysewerkzeuge</h2>
+            <button class="tool-link" type="button"><span>Häufigkeitsanalyse</span></button>
+            <button class="tool-link" type="button"><span>Caesar-Knacker</span></button>
+            <button class="tool-link" type="button"><span>Kryptoanalyse</span></button>
+          </section>
+        </div>
       </aside>
 
       <section class="workspace" aria-label="Arbeitsbereich">
-        <div class="main-tabs" role="tablist" aria-label="Hauptbereiche">
-          <button class="main-tab is-active" type="button">Verschlüsseln / Entschlüsseln</button>
-          <button class="main-tab" type="button">Kryptoanalyse</button>
+        <div class="mode-switch card" aria-label="Modus wählen">
+          <button class="mode-option is-active" type="button" data-mode-button="encrypt">Verschlüsseln</button>
+          <button class="mode-option" type="button" data-mode-button="decrypt">Entschlüsseln</button>
         </div>
 
-        <div class="workspace-content">
-          <section class="work-column">
-            <div class="mode-card card">
-              <span class="section-label">Modus</span>
-              <div class="segmented-control" aria-label="Modus wählen">
-                <button class="is-active" type="button">Verschlüsseln</button>
-                <button type="button">Entschlüsseln</button>
+        <section class="flow-panel" data-mode-panel="encrypt">
+          <article class="card input-card flow-card">
+            <div class="card-heading">
+              <h2>Klartext eingeben</h2>
+              <span>Schritt 1</span>
+            </div>
+            <textarea aria-label="Klartext eingeben" placeholder="Gib hier deinen Klartext ein …"></textarea>
+          </article>
+
+          <article class="card procedure-card flow-card">
+            <div class="card-heading">
+              <h2>Verschlüsselungsverfahren</h2>
+              <span>Schritt 2</span>
+            </div>
+            <div class="selected-tool">
+              <strong>Caesar-Verschlüsselung</strong>
+              <p>Jeder Buchstabe wird im Alphabet um eine feste Anzahl verschoben.</p>
+            </div>
+            <div class="setting-row compact">
+              <label>Schlüssel</label>
+              <div class="stepper" aria-label="Schlüsselwert">
+                <button type="button">−</button>
+                <strong>3</strong>
+                <button type="button">+</button>
               </div>
             </div>
+          </article>
 
-            <section class="card input-card">
-              <div class="card-heading">
-                <h2>Text eingabe</h2>
-                <span>0 Zeichen</span>
-              </div>
-              <textarea aria-label="Texteingabe" placeholder="Gib hier deinen Klartext ein …"></textarea>
-            </section>
+          <article class="card output-card flow-card">
+            <div class="card-heading">
+              <h2>Geheimtext erhalten</h2>
+              <span>Schritt 3</span>
+            </div>
+            <div class="output-placeholder">Hier erscheint der verschlüsselte Text …</div>
+            <div class="button-row">
+              <button class="primary-action" type="button">Kopieren</button>
+              <button class="secondary-action" type="button">Löschen</button>
+            </div>
+          </article>
+        </section>
 
-            <section class="card settings-card">
-              <h2>Einstellungen</h2>
-              <div class="setting-row">
-                <label>Schlüssel</label>
-                <div class="stepper" aria-label="Schlüsselwert">
-                  <button type="button">−</button>
-                  <strong>3</strong>
-                  <button type="button">+</button>
-                </div>
-                <p>Wähle einen Wert zwischen 0 und 25.</p>
-              </div>
-              <div class="setting-row full">
-                <label>Alphabet</label>
-                <div class="fake-select">A–Z (26 Buchstaben)</div>
-              </div>
-            </section>
+        <section class="flow-panel is-hidden" data-mode-panel="decrypt">
+          <article class="card input-card flow-card">
+            <div class="card-heading">
+              <h2>Geheimtext eingeben</h2>
+              <span>Schritt 1</span>
+            </div>
+            <textarea aria-label="Geheimtext eingeben" placeholder="Gib hier deinen Geheimtext ein …"></textarea>
+          </article>
 
-            <section class="card output-card">
-              <div class="card-heading">
-                <h2>Ausgabe</h2>
-                <span>0 Zeichen</span>
+          <article class="card procedure-card flow-card">
+            <div class="card-heading">
+              <h2>Entschlüsselungsverfahren</h2>
+              <span>Schritt 2</span>
+            </div>
+            <div class="selected-tool">
+              <strong>Caesar-Entschlüsselung</strong>
+              <p>Der Schlüssel wird rückwärts angewendet. Bei unbekanntem Schlüssel kann später der Caesar-Knacker helfen.</p>
+            </div>
+            <div class="setting-row compact">
+              <label>Schlüssel</label>
+              <div class="stepper" aria-label="Schlüsselwert">
+                <button type="button">−</button>
+                <strong>3</strong>
+                <button type="button">+</button>
               </div>
-              <div class="output-placeholder">Hier erscheint der Geheimtext …</div>
-              <div class="button-row">
-                <button class="primary-action" type="button">Kopieren</button>
-                <button class="secondary-action" type="button">Löschen</button>
-              </div>
-            </section>
-          </section>
+            </div>
+          </article>
 
-          <aside class="info-column" aria-label="Hinweise und Informationen">
-            <section class="card info-card">
-              <h2>Verfahrensinfo</h2>
-              <h3>Caesar-Verschlüsselung</h3>
-              <p>Jeder Buchstabe wird im Alphabet um eine bestimmte Anzahl von Positionen verschoben.</p>
-              <div class="example-line">
-                <span>Klartext:</span>
-                <code>A B C D E F … X Y Z</code>
-              </div>
-              <div class="example-line accent">
-                <span>Geheim:</span>
-                <code>D E F G H I … A B C</code>
-              </div>
-            </section>
+          <article class="card output-card flow-card">
+            <div class="card-heading">
+              <h2>Klartext erhalten</h2>
+              <span>Schritt 3</span>
+            </div>
+            <div class="output-placeholder">Hier erscheint der entschlüsselte Text …</div>
+            <div class="button-row">
+              <button class="primary-action" type="button">Kopieren</button>
+              <button class="secondary-action" type="button">Löschen</button>
+            </div>
+          </article>
+        </section>
 
-            <section class="card help-card">
-              <h2>Schnellhilfe</h2>
-              <ol>
-                <li>Wähle links ein Verfahren.</li>
-                <li>Gib deinen Text ein.</li>
-                <li>Prüfe die Einstellungen.</li>
-                <li>Sieh dir das Ergebnis an.</li>
-              </ol>
-              <p class="tip"><strong>Tipp:</strong> Beim Entschlüsseln kannst du verschiedene Schlüssel ausprobieren.</p>
-            </section>
-
-            <section class="card status-card">
-              <h2>Aktuelle Einstellungen</h2>
-              <dl>
-                <div><dt>Verfahren</dt><dd>Caesar</dd></div>
-                <div><dt>Modus</dt><dd>Verschlüsseln</dd></div>
-                <div><dt>Schlüssel</dt><dd>3</dd></div>
-                <div><dt>Alphabet</dt><dd>A–Z (26)</dd></div>
-              </dl>
-            </section>
-          </aside>
-        </div>
+        <aside class="quick-info card" aria-label="Kurzhinweis">
+          <h2>Kurzhilfe</h2>
+          <p>Wähle links ein Verfahren. Arbeite dann von oben nach unten: Text eingeben, Verfahren prüfen, Ergebnis ansehen.</p>
+        </aside>
       </section>
     </main>
 
     <footer class="station-footer">
       <span>Kryptoanalyse-Station</span>
-      <span>v0.1.0</span>
-      <span>Prototyp</span>
-      <span>Keine Funktionen</span>
-      <span>Lokal im Browser</span>
+      <span>v0.1.2</span>
+      <span>Layout-Prototyp</span>
+      <span>Keine echten Funktionen</span>
     </footer>
   </div>
 
