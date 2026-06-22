@@ -35,6 +35,8 @@ Das Projekt bündelt mehrere interaktive Kryptographie- und Geheimschriftenwerkz
 - Repository ist angelegt.
 - Grundstruktur für eine modulare Webanwendung wurde vorbereitet.
 - Ordner `Dateivorlagen` dient als Sammelort für bisherige Einzeltools, bevor sie in die neue Struktur überführt werden.
+- Ein statischer Layout-Prototyp der Kryptoanalyse-Station wurde in `index.html` umgesetzt.
+- Die Oberfläche besitzt noch keine echte Verschlüsselungs-, Entschlüsselungs- oder Analysefunktion.
 
 ---
 
@@ -70,10 +72,13 @@ kryptotool/
 
 Kurze Erklärung:
 
-- `index.html`: Startpunkt der Anwendung
-- `css/`: globale Gestaltung, Layout, Komponenten und Themes
-- `js/main.js`: Einstiegspunkt der Anwendung
-- `js/app.js`: verbindet Zustand, Oberfläche und Module
+- `index.html`: Startpunkt der Anwendung und aktueller Layout-Prototyp
+- `css/global.css`: globale Variablen, Grundfarben, Typografie und Hintergrund
+- `css/layout.css`: Raster, Seitenaufbau, responsive Struktur
+- `css/components.css`: Karten, Buttons, Navigation, Eingabe- und Ausgabefelder
+- `css/themes.css`: Notizen und spätere Varianten für das visuelle Design
+- `js/main.js`: Einstiegspunkt der späteren Anwendung
+- `js/app.js`: verbindet später Zustand, Oberfläche und Module
 - `js/state.js`: zentraler Zustand der Anwendung
 - `js/registry.js`: Registrierung der verfügbaren Geheimschriften und Analysewerkzeuge
 - `js/ciphers/`: einzelne Verschlüsselungsverfahren
@@ -91,6 +96,12 @@ Kurze Erklärung:
 - Verschlüsselung, Entschlüsselung, Analyse und UI werden voneinander getrennt.
 - Das Projekt soll zunächst ohne Framework funktionieren.
 - Die Oberfläche soll für den Unterricht klar, ruhig und gut lesbar sein.
+- Das gewählte Design orientiert sich an einer dunklen, technischen Kryptoanalyse-Station.
+- Nutzer ohne technische Vorerfahrung sollen die Seite schnell erfassen können.
+- Die Hauptorientierung erfolgt über zwei große Bereiche: `Verschlüsseln / Entschlüsseln` und `Kryptoanalyse`.
+- Die linke Seitenleiste bündelt Verfahren und Analysewerkzeuge.
+- Der zentrale Arbeitsbereich folgt der Reihenfolge: Texteingabe → Einstellungen → Ausgabe.
+- Die rechte Spalte erklärt das gewählte Verfahren und bietet Schnellhilfe.
 
 ---
 
@@ -105,10 +116,13 @@ Kurze Erklärung:
 
 ## Offene Aufgaben
 
+- Layout-Prototyp im Browser prüfen und Designentscheidungen überarbeiten.
 - Bisherige Einzeltools in `Dateivorlagen` sammeln.
 - Bestehende Tools analysieren und in Module überführen.
-- Grundoberfläche für Verschlüsseln, Entschlüsseln und Analyse erstellen.
+- Modulschnittstelle für Verfahren endgültig festlegen.
 - Caesar als erstes vollständiges Modul integrieren.
+- Umschaltung zwischen Verschlüsseln und Entschlüsseln funktional machen.
+- Kryptoanalyse-Ansicht als eigene Darstellung ausarbeiten.
 - Symbolausgabe für Freimaurer und Gnomisch planen.
 - Häufigkeitsanalyse als erstes Analysewerkzeug umsetzen.
 - GitHub Pages vorbereiten.
@@ -120,6 +134,8 @@ Kurze Erklärung:
 - Noch keine eigentliche Anwendung implementiert.
 - Noch keine bestehenden Tools integriert.
 - Modulschnittstellen sind geplant, aber noch nicht endgültig festgelegt.
+- Der aktuelle Prototyp ist noch statisch und dient nur der Layoutbewertung.
+- Mobile Darstellung muss nach dem ersten Browsertest geprüft werden.
 
 ---
 
@@ -132,6 +148,7 @@ Kurze Erklärung:
 - HTML, CSS und JavaScript sauber trennen.
 - Neue Funktionen möglichst modular anlegen.
 - Commit-Messages auf Englisch formulieren.
+- Designänderungen zuerst als statische Prototypen prüfen, bevor Funktionen eingebaut werden.
 
 ---
 
@@ -146,11 +163,11 @@ main
 Letzter empfohlener Commit:
 
 ```text
-docs: create initial project structure
+style: add dark crypto station layout prototype
 ```
 
 ---
 
 ## Nächster empfohlener Schritt
 
-Die bisherigen Einzeltools in den Ordner `Dateivorlagen` hochladen. Danach sollte WILFRIED die Dateien analysieren und einen Migrationsplan für die modulare Zusammenführung erstellen.
+Den Layout-Prototyp im Browser prüfen. Danach sollten Farben, Abstände, Schriftgrößen, Bedienführung und mobile Darstellung bewertet werden, bevor echte Funktionen integriert werden.
