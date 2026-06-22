@@ -6,6 +6,7 @@ export function initApp() {
   console.info("Kryptotool gestartet", { state, tools });
 
   initModePlaceholder();
+  initDropdownPanels();
 }
 
 function initModePlaceholder() {
@@ -23,6 +24,18 @@ function initModePlaceholder() {
       panels.forEach((panel) => {
         panel.classList.toggle("is-hidden", panel.dataset.modePanel !== selectedMode);
       });
+    });
+  });
+}
+
+function initDropdownPanels() {
+  const triggers = document.querySelectorAll("[data-dropdown-trigger]");
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const dropdown = trigger.closest(".side-dropdown");
+      const isOpen = dropdown.classList.toggle("is-open");
+      trigger.setAttribute("aria-expanded", String(isOpen));
     });
   });
 }
