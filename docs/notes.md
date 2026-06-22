@@ -1,3 +1,0 @@
-# Notes
-
-Refactoring abgeschlossen.
