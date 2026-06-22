@@ -74,7 +74,7 @@ window.KryptoTool.ciphers = window.KryptoTool.ciphers || {};
     label: "Zentaurische Schrift",
     type: "symbol-cipher",
     category: "cipher",
-    description: "Symbolschrift mit als SVG nachgezeichneten Zentauren-Zeichen.",
+    description: "Zentaurische Schrift nach Eoin Colfers Roman \"Artemis Fowl: Die Verschwörung\".",
     supports: ["encrypt", "decrypt"],
     alphabet: ALPHABET,
     hasGlyph,
