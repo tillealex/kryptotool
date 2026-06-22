@@ -2,6 +2,29 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 
+## 0.1.2 - Vereinfachter Layout-Prototyp
+
+### Neu
+
+- Layout stärker auf den zentralen Arbeitsfluss reduziert.
+- Haupttabs nehmen jetzt die gesamte Seitenbreite ein.
+- Linkes Verfahren-Menü wurde als Hover-Menü an den linken Bildschirmrand verlegt.
+- Zentraler Arbeitsbereich folgt jetzt klar der Reihenfolge:
+  - Text eingeben
+  - Verschlüsselungs- oder Entschlüsselungsverfahren prüfen
+  - Ergebnis ansehen
+- Platzhalter-Umschaltung zwischen `Verschlüsseln` und `Entschlüsseln` ergänzt.
+
+### Geändert
+
+- Rechte Hilfespalte entfernt, um die Seite ruhiger und übersichtlicher zu machen.
+- Kurzhilfe steht nun kompakter unter dem zentralen Arbeitsbereich.
+
+### Hinweis
+
+- Die Umschaltung zwischen Verschlüsseln und Entschlüsseln ist bisher nur ein Layout-Platzhalter.
+- Es findet noch keine echte Berechnung statt.
+
 ## 0.1.1 - Design-Prototyp Kryptoanalyse-Station
 
 ### Neu
