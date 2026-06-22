@@ -2,6 +2,25 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 
+## 0.1.6 - Breite Arbeitsfläche und robuste Dropdowns
+
+### Neu
+
+- Dropdowns funktionieren nun ohne JavaScript-Module und reagieren auch beim lokalen Öffnen der HTML-Datei zuverlässig.
+- Die Menüs `Verfahren` und `Infos` sind mit sichtbaren Platzhalterinhalten gefüllt.
+
+### Geändert
+
+- `main.js` wurde vorerst als einfaches Skript ohne Import/Export umgesetzt.
+- `index.html` lädt `js/main.js` ohne `type="module"`, damit die Prototyp-Interaktionen lokal robuster funktionieren.
+- Die zentrale Arbeitsfläche nutzt jetzt fast die gesamte verfügbare Bildschirmbreite.
+- Eingabe- und Ausgabeboxen wurden breiter und höher gestaltet.
+
+### Hinweis
+
+- Die kryptographischen Funktionen sind weiterhin Platzhalter.
+- Die Modulstruktur bleibt im Projekt erhalten und kann später für die echten Verfahren wieder genutzt werden.
+
 ## 0.1.5 - Overlay-Dropdown-Prototyp
 
 ### Neu
