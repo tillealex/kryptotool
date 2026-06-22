@@ -1,7 +1,7 @@
 .station-shell {
-  width: min(1480px, calc(100% - 24px));
-  min-height: calc(100vh - 24px);
-  margin: 12px auto;
+  width: min(1800px, calc(100% - 16px));
+  min-height: calc(100vh - 16px);
+  margin: 8px auto;
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
@@ -77,13 +77,13 @@
 }
 
 .station-frame {
-  min-height: calc(100vh - 190px);
+  min-height: calc(100vh - 182px);
   padding: 1rem;
 }
 
 .workspace {
   position: relative;
-  width: min(900px, 100%);
+  width: min(1680px, 100%);
   margin: 0 auto;
 }
 
@@ -107,7 +107,7 @@
   z-index: 40;
   display: grid;
   gap: 1rem;
-  width: min(360px, calc(100vw - 2rem));
+  width: min(420px, calc(100vw - 2rem));
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -140,7 +140,7 @@
 
 .mode-switch {
   display: grid;
-  grid-template-columns: auto 1fr 1fr;
+  grid-template-columns: auto minmax(160px, 220px) minmax(160px, 220px);
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
@@ -153,6 +153,10 @@
 
 .flow-card {
   min-width: 0;
+}
+
+.wide-text-card {
+  width: 100%;
 }
 
 .setting-row {
