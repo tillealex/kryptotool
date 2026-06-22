@@ -2,6 +2,25 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 
+## 0.1.7 - Erste Geheimschrift: Freimaurer-Code
+
+### Neu
+
+- Der Freimaurer-Code wurde als erste Geheimschrift in die Oberfläche eingefügt.
+- Im Verfahren-Dropdown steht `Freimaurer-Code` nun als erster aktiver Eintrag.
+- Arbeitsbereich, Infofeld und aktuelle Einstellungen sind auf den Freimaurer-Code umgestellt.
+- Ein erster Platzhalter für eine spätere Symbolausgabe wurde ergänzt.
+
+### Geändert
+
+- Dropdown-Menüs sind jetzt genau so breit wie ihre Buttons.
+- Die frühere feste Dropdown-Breite wurde entfernt.
+
+### Hinweis
+
+- Die eigentliche Umwandlung in Freimaurer-Symbole ist noch nicht implementiert.
+- Die aktuelle Umsetzung dient als sichtbarer Struktur- und Designschritt für die erste Symbol-Geheimschrift.
+
 ## 0.1.6 - Breite Arbeitsfläche und robuste Dropdowns
 
 ### Neu
