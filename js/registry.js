@@ -66,4 +66,23 @@ window.KryptoTool.registry = window.KryptoTool.registry || {};
   } else {
     console.error("Freimaurer-Werkzeug konnte nicht registriert werden.");
   }
+
+  const centaurCipher = window.KryptoTool?.ciphers?.centaur;
+  const centaurView = window.KryptoTool?.ui?.initCentaurView;
+
+  if (centaurCipher && centaurView) {
+    registerTool({
+      id: centaurCipher.id,
+      label: centaurCipher.label,
+      type: centaurCipher.type,
+      category: "cipher",
+      description: centaurCipher.description,
+      supports: centaurCipher.supports,
+      alphabet: centaurCipher.alphabet,
+      defaultMode: "encrypt",
+      init: centaurView,
+    });
+  } else {
+    console.error("Zentauren-Werkzeug konnte nicht registriert werden.");
+  }
 })(window.KryptoTool.registry);
