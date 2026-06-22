@@ -1,10 +1,8 @@
 .card,
-.sidebar,
 .main-tab,
 .tool-link,
 .header-actions button,
-.back-button,
-.segmented-control button,
+.mode-option,
 .stepper,
 .fake-select,
 .output-placeholder,
@@ -51,7 +49,7 @@
 .header-actions button:hover,
 .tool-link:hover,
 .main-tab:hover,
-.segmented-control button:hover {
+.mode-option:hover {
   border-color: rgba(83, 255, 145, 0.34);
   color: var(--text);
 }
@@ -102,19 +100,8 @@
   color: var(--accent);
 }
 
-.back-button {
-  margin-top: auto;
-  padding: 0.78rem 0.9rem;
-  border-radius: 10px;
-  color: var(--muted-strong);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.78rem;
-  cursor: pointer;
-}
-
 .main-tab {
-  min-height: 60px;
+  min-height: 64px;
   border-top: 0;
   border-left: 0;
   border-bottom: 0;
@@ -132,35 +119,24 @@
   box-shadow: inset 0 2px 0 var(--accent);
 }
 
-.section-label {
-  min-width: 80px;
-  color: var(--muted);
-  font-size: 0.86rem;
+.mode-option {
+  min-height: 58px;
+  border-radius: 12px;
+  color: var(--muted-strong);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 700;
-}
-
-.segmented-control {
-  display: flex;
-  gap: 0.55rem;
-}
-
-.segmented-control button,
-.stepper button,
-.primary-action,
-.secondary-action {
-  border-radius: 10px;
-  padding: 0.75rem 1.05rem;
+  font-weight: 800;
   cursor: pointer;
 }
 
-.segmented-control button.is-active,
-.primary-action {
+.mode-option.is-active {
   border-color: var(--line-strong);
   background: var(--accent-soft);
   color: var(--accent);
-  font-weight: 750;
+}
+
+.is-hidden {
+  display: none;
 }
 
 .card-heading {
@@ -171,13 +147,15 @@
 }
 
 .card-heading span {
-  color: var(--muted);
-  font-size: 0.84rem;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
 textarea {
   width: 100%;
-  min-height: 190px;
+  min-height: 210px;
   resize: vertical;
   border: 1px solid rgba(105, 130, 160, 0.32);
   border-radius: 12px;
@@ -203,6 +181,22 @@ label {
   font-weight: 700;
 }
 
+.selected-tool {
+  border: 1px solid rgba(83, 255, 145, 0.20);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(83, 255, 145, 0.07);
+}
+
+.selected-tool strong {
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.selected-tool p {
+  margin: 0.45rem 0 0;
+}
+
 .stepper {
   display: grid;
   grid-template-columns: 44px 1fr 44px;
@@ -217,6 +211,7 @@ label {
   background: transparent;
   color: var(--muted-strong);
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .stepper strong {
@@ -228,15 +223,6 @@ label {
   font-family: var(--mono);
 }
 
-.setting-row p {
-  margin: 0;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0.8rem;
-  background: rgba(9, 17, 27, 0.55);
-  font-size: 0.9rem;
-}
-
 .fake-select {
   border-radius: 10px;
   padding: 0.85rem 1rem;
@@ -244,7 +230,7 @@ label {
 }
 
 .output-placeholder {
-  min-height: 130px;
+  min-height: 150px;
   border-radius: 12px;
   padding: 1rem;
   background: rgba(9, 17, 27, 0.92);
@@ -256,65 +242,29 @@ label {
   margin-top: 0.85rem;
 }
 
+.primary-action,
+.secondary-action {
+  border-radius: 10px;
+  padding: 0.75rem 1.05rem;
+  cursor: pointer;
+}
+
+.primary-action {
+  border-color: var(--line-strong);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 750;
+}
+
 .secondary-action {
   color: var(--muted-strong);
 }
 
-.example-line {
-  display: grid;
-  grid-template-columns: 78px 1fr;
-  gap: 0.5rem;
-  margin-top: 0.7rem;
-  color: var(--muted);
-}
-
-.example-line code {
-  color: var(--muted-strong);
-  font-family: var(--mono);
-}
-
-.example-line.accent code {
-  color: var(--accent);
-}
-
-.help-card ol {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.tip {
-  margin-top: 1rem;
-  border: 1px solid rgba(83, 255, 145, 0.20);
-  border-radius: 12px;
-  padding: 0.9rem;
-  background: rgba(83, 255, 145, 0.07);
-}
-
-.tip strong,
-.status-card dd {
-  color: var(--accent);
-}
-
-.status-card dl {
-  display: grid;
-  gap: 0.75rem;
-  margin: 0;
-}
-
-.status-card dl div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.status-card dt,
-.status-card dd {
+.quick-info p {
   margin: 0;
 }
 
 @media (max-width: 820px) {
-  .mode-card,
-  .segmented-control,
   .button-row {
     flex-direction: column;
     align-items: stretch;
