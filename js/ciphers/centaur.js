@@ -33,6 +33,7 @@ window.KryptoTool.ciphers = window.KryptoTool.ciphers || {};
     return `<polygon points="${round(x1 + nx)},${round(y1 + ny)} ${round(x2 + nx)},${round(y2 + ny)} ${round(x2 - nx)},${round(y2 - ny)} ${round(x1 - nx)},${round(y1 - ny)}"/>`;
   };
 
+  const triUp = (cx, cy, size = 10) => `<polygon points="${cx},${cy - size / 2} ${cx + size},${cy + size / 2} ${cx - size},${cy + size / 2}"/>`;
   const triDown = (cx, cy, size = 10) => `<polygon points="${cx - size},${cy - size / 2} ${cx + size},${cy - size / 2} ${cx},${cy + size / 2}"/>`;
   const triLeft = (cx, cy, size = 10) => `<polygon points="${cx - size / 2},${cy} ${cx + size / 2},${cy - size} ${cx + size / 2},${cy + size}"/>`;
   const triRight = (cx, cy, size = 10) => `<polygon points="${cx + size / 2},${cy} ${cx - size / 2},${cy - size} ${cx - size / 2},${cy + size}"/>`;
