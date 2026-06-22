@@ -36,6 +36,11 @@ function initDropdownPanels() {
       const dropdown = trigger.closest(".side-dropdown");
       const isOpen = dropdown.classList.toggle("is-open");
       trigger.setAttribute("aria-expanded", String(isOpen));
+
+      const arrow = trigger.querySelector(".dropdown-arrow");
+      if (arrow) {
+        arrow.textContent = isOpen ? "⌃" : "⌄";
+      }
     });
   });
 }
