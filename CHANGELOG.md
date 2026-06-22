@@ -2,6 +2,27 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 
+## 0.1.4 - Kompakter Dropdown-Prototyp
+
+### Neu
+
+- Layout nach der kompakteren unteren Mockup-Variante umgesetzt.
+- Links und rechts stehen die Dropdown-Bereiche jetzt als eigene Spalten neben der zentralen Arbeitsfläche.
+- Beide Seitenbereiche passen sich in Höhe und Position an die zentrale Verschlüsseln-/Entschlüsseln-Box an.
+- Die Verfahren-Liste enthält nun konkrete Einträge für Textgeheimschriften, Symbolgeheimschriften und Analysewerkzeuge.
+- Die Info-Box erklärt das Caesar-Verfahren ausführlicher.
+- Dropdown-Pfeile ändern beim Auf- und Zuklappen ihren Zustand.
+
+### Geändert
+
+- Die breite obere Layout-Variante bleibt nur noch als alternative Layout-Idee im Projektgedächtnis erhalten.
+- Bei schmaleren Browserfenstern ordnen sich Verfahren, Arbeitsbereich und Infos weiterhin untereinander an.
+
+### Hinweis
+
+- Die Dropdowns zeigen jetzt besser, wie die Oberfläche später aufgleitet.
+- Die kryptographischen Funktionen sind weiterhin Platzhalter.
+
 ## 0.1.3 - Dropdown-Prototyp für Verfahren und Infos
 
 ### Neu
