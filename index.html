@@ -40,18 +40,18 @@
 
             <div class="dropdown-panel" data-dropdown-panel="procedures">
               <section class="nav-group">
-                <h2>Textgeheimschriften</h2>
-                <button class="tool-link is-active" type="button"><span>Caesar</span></button>
-                <button class="tool-link" type="button"><span>Vigenère</span></button>
-                <button class="tool-link" type="button"><span>Substitution</span></button>
-              </section>
-
-              <section class="nav-group">
                 <h2>Symbolgeheimschriften</h2>
-                <button class="tool-link" type="button"><span>Freimaurer</span></button>
+                <button class="tool-link is-active" type="button" data-tool="freimaurer"><span>Freimaurer-Code</span></button>
                 <button class="tool-link" type="button"><span>Gnomisch</span></button>
                 <button class="tool-link" type="button"><span>Polybius</span></button>
                 <button class="tool-link" type="button"><span>Pigpen</span></button>
+              </section>
+
+              <section class="nav-group">
+                <h2>Textgeheimschriften</h2>
+                <button class="tool-link" type="button"><span>Caesar</span></button>
+                <button class="tool-link" type="button"><span>Vigenère</span></button>
+                <button class="tool-link" type="button"><span>Substitution</span></button>
               </section>
 
               <section class="nav-group">
@@ -73,36 +73,34 @@
             <div class="dropdown-panel info-panel" data-dropdown-panel="infos">
               <article class="card info-card">
                 <h2>Verfahrensinfo</h2>
-                <h3>Caesar-Verschlüsselung</h3>
-                <p>Bei der Caesar-Verschlüsselung wird jeder Buchstabe im Alphabet um gleich viele Stellen verschoben.</p>
-                <p>Der Schlüssel gibt an, wie weit verschoben wird. Bei Schlüssel 3 wird aus A der Buchstabe D.</p>
-                <div class="example-line">
-                  <span>Klartext:</span>
-                  <code>A B C D E F … X Y Z</code>
-                </div>
-                <div class="example-line accent">
-                  <span>Geheim:</span>
-                  <code>D E F G H I … A B C</code>
+                <h3>Freimaurer-Code</h3>
+                <p>Der Freimaurer-Code ist eine Symbol-Geheimschrift. Jeder Buchstabe wird nicht durch einen anderen Buchstaben ersetzt, sondern durch ein Zeichen aus Linien und Punkten.</p>
+                <p>Das Alphabet wird in mehrere kleine Gitter aufgeteilt. Die Form des Feldes und ein möglicher Punkt ergeben zusammen das Symbol.</p>
+                <div class="symbol-preview" aria-label="Beispiel Freimaurer-Code">
+                  <span class="symbol-tile">A</span>
+                  <span class="symbol-tile">B</span>
+                  <span class="symbol-tile">C</span>
+                  <span class="symbol-tile dotted">D</span>
                 </div>
               </article>
 
               <article class="card help-card">
                 <h2>Schnellhilfe</h2>
                 <ol>
-                  <li>Wähle links ein Verfahren.</li>
-                  <li>Gib deinen Text in der Mitte ein.</li>
-                  <li>Stelle den Schlüssel ein.</li>
-                  <li>Lies unten das Ergebnis ab.</li>
+                  <li>Wähle links den Freimaurer-Code.</li>
+                  <li>Gib deinen Klartext ein.</li>
+                  <li>Das Ergebnis wird später als Symbolfolge dargestellt.</li>
+                  <li>Beim Entschlüsseln wählst du die passenden Symbole zurück.</li>
                 </ol>
               </article>
 
               <article class="card status-card">
                 <h2>Aktuelle Einstellungen</h2>
                 <dl>
-                  <div><dt>Verfahren</dt><dd>Caesar</dd></div>
-                  <div><dt>Modus</dt><dd>Verschlüsseln</dd></div>
-                  <div><dt>Schlüssel</dt><dd>3</dd></div>
-                  <div><dt>Alphabet</dt><dd>A–Z (26)</dd></div>
+                  <div><dt>Verfahren</dt><dd>Freimaurer-Code</dd></div>
+                  <div><dt>Art</dt><dd>Symbolschrift</dd></div>
+                  <div><dt>Schlüssel</dt><dd>keiner</dd></div>
+                  <div><dt>Alphabet</dt><dd>A–Z</dd></div>
                 </dl>
               </article>
             </div>
@@ -126,29 +124,24 @@
 
           <article class="card procedure-card flow-card">
             <div class="card-heading">
-              <h2>2. Verfahren einstellen</h2>
+              <h2>2. Freimaurer-Code verwenden</h2>
             </div>
-            <div class="setting-row compact">
-              <label>Schlüssel</label>
-              <div class="stepper" aria-label="Schlüsselwert">
-                <button type="button">−</button>
-                <strong>3</strong>
-                <button type="button">+</button>
-              </div>
-              <p>Wähle einen Wert zwischen 0 und 25.</p>
+            <div class="selected-tool">
+              <strong>Freimaurer-Code</strong>
+              <p>Die Buchstaben werden später als Freimaurer-Symbole dargestellt. Dieser Bereich ist der erste Platzhalter für eine echte Symbol-Geheimschrift.</p>
             </div>
             <div class="setting-row full">
               <label>Alphabet</label>
-              <div class="fake-select">A–Z (26 Buchstaben)</div>
+              <div class="fake-select">Freimaurer-Alphabet A–Z</div>
             </div>
           </article>
 
           <article class="card output-card flow-card wide-text-card">
             <div class="card-heading">
-              <h2>3. Ergebnis</h2>
+              <h2>3. Symbolausgabe</h2>
               <span>0 Zeichen</span>
             </div>
-            <div class="output-placeholder">Hier erscheint der Geheimtext …</div>
+            <div class="output-placeholder symbol-output-placeholder">Hier erscheinen später die Freimaurer-Symbole …</div>
             <div class="button-row">
               <button class="primary-action" type="button">Kopieren</button>
               <button class="secondary-action" type="button">Löschen</button>
@@ -159,37 +152,32 @@
         <section class="flow-panel is-hidden" data-mode-panel="decrypt">
           <article class="card input-card flow-card wide-text-card">
             <div class="card-heading">
-              <h2>1. Geheimtext eingeben</h2>
+              <h2>1. Symbole eingeben</h2>
               <span>0 Zeichen</span>
             </div>
-            <textarea aria-label="Geheimtext eingeben" placeholder="Gib hier deinen Geheimtext ein …"></textarea>
+            <textarea aria-label="Symbole eingeben" placeholder="Gib hier später deine Freimaurer-Symbole ein …"></textarea>
           </article>
 
           <article class="card procedure-card flow-card">
             <div class="card-heading">
-              <h2>2. Verfahren einstellen</h2>
+              <h2>2. Freimaurer-Code lesen</h2>
             </div>
-            <div class="setting-row compact">
-              <label>Schlüssel</label>
-              <div class="stepper" aria-label="Schlüsselwert">
-                <button type="button">−</button>
-                <strong>3</strong>
-                <button type="button">+</button>
-              </div>
-              <p>Nutze den Schlüssel rückwärts oder teste später mehrere Schlüssel.</p>
+            <div class="selected-tool">
+              <strong>Freimaurer-Code</strong>
+              <p>Beim Entschlüsseln werden die Symbole später wieder den Buchstaben des Alphabets zugeordnet.</p>
             </div>
             <div class="setting-row full">
               <label>Alphabet</label>
-              <div class="fake-select">A–Z (26 Buchstaben)</div>
+              <div class="fake-select">Freimaurer-Alphabet A–Z</div>
             </div>
           </article>
 
           <article class="card output-card flow-card wide-text-card">
             <div class="card-heading">
-              <h2>3. Ergebnis</h2>
+              <h2>3. Klartext</h2>
               <span>0 Zeichen</span>
             </div>
-            <div class="output-placeholder">Hier erscheint der Klartext …</div>
+            <div class="output-placeholder">Hier erscheint später der entschlüsselte Klartext …</div>
             <div class="button-row">
               <button class="primary-action" type="button">Kopieren</button>
               <button class="secondary-action" type="button">Löschen</button>
@@ -201,9 +189,9 @@
 
     <footer class="station-footer">
       <span>Kryptoanalyse-Station</span>
-      <span>v0.1.6</span>
-      <span>Overlay-Dropdown-Prototyp</span>
-      <span>Menüs gefüllt</span>
+      <span>v0.1.7</span>
+      <span>Freimaurer-Code</span>
+      <span>Symbolschrift-Platzhalter</span>
     </footer>
   </div>
 
