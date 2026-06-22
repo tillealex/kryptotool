@@ -1,0 +1,1 @@
+export function encryptFreemason(text){ return text.toUpperCase(); }
