@@ -1,6 +1,9 @@
-export const FREEMASON_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+window.KryptoTool = window.KryptoTool || {};
+window.KryptoTool.ciphers = window.KryptoTool.ciphers || {};
 
-export const FREEMASON_CIPHER = {
+const FREEMASON_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+const FREEMASON_CIPHER = {
   id: "freemason",
   label: "Freimaurer-Code",
   type: "symbol-cipher",
@@ -8,15 +11,15 @@ export const FREEMASON_CIPHER = {
   supports: ["encrypt", "decrypt"],
 };
 
-export function normalizeFreemasonText(text) {
+function normalizeFreemasonText(text) {
   return Array.from(text.toUpperCase());
 }
 
-export function isFreemasonLetter(character) {
-  return /^[A-Z]$/.test(character);
+function isFreemasonLetter(character) {
+  return character.length === 1 && character >= "A" && character <= "Z";
 }
 
-export function getFreemasonSymbolClass(letter) {
+function getFreemasonSymbolClass(letter) {
   const index = FREEMASON_LETTERS.indexOf(letter);
 
   if (index === -1) {
@@ -24,16 +27,24 @@ export function getFreemasonSymbolClass(letter) {
   }
 
   if (index < 9) {
-    return `grid grid-${index}`;
+    return "grid grid-" + index;
   }
 
   if (index < 18) {
-    return `grid grid-${index - 9} dotted`;
+    return "grid grid-" + (index - 9) + " dotted";
   }
 
   if (index < 22) {
-    return `x x-${index - 18}`;
+    return "x x-" + (index - 18);
   }
 
-  return `x x-${index - 22} dotted`;
+  return "x x-" + (index - 22) + " dotted";
 }
+
+window.KryptoTool.ciphers.freemason = {
+  FREEMASON_LETTERS,
+  FREEMASON_CIPHER,
+  normalizeFreemasonText,
+  isFreemasonLetter,
+  getFreemasonSymbolClass,
+};
