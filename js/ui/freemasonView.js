@@ -1,18 +1,21 @@
-import {
-  FREEMASON_LETTERS,
-  getFreemasonSymbolClass,
-  isFreemasonLetter,
-  normalizeFreemasonText,
-} from "../ciphers/freemason.js";
+window.KryptoTool = window.KryptoTool || {};
+window.KryptoTool.ui = window.KryptoTool.ui || {};
 
-export function initFreemasonView() {
-  initFreemasonEncrypt();
-  initFreemasonDecryptButtons();
+function initFreemasonView() {
+  const cipher = window.KryptoTool?.ciphers?.freemason;
+
+  if (!cipher) {
+    console.error("Freimaurer-Chiffre wurde nicht geladen.");
+    return;
+  }
+
+  initFreemasonEncrypt(cipher);
+  initFreemasonDecryptButtons(cipher);
   initFreemasonInversion();
   initFreemasonLabelToggle();
 }
 
-function initFreemasonEncrypt() {
+function initFreemasonEncrypt(cipher) {
   const input = document.querySelector("[data-freemason-input]");
   const output = document.querySelector("[data-freemason-output]");
   const counter = document.querySelector("[data-encrypt-count]");
@@ -20,11 +23,11 @@ function initFreemasonEncrypt() {
   if (!input || !output) return;
 
   input.addEventListener("input", () => {
-    renderFreemasonText(input.value, output);
+    renderFreemasonText(input.value, output, cipher);
     updateTextCounter(counter, input.value.length);
   });
 
-  renderFreemasonText(input.value, output);
+  renderFreemasonText(input.value, output, cipher);
   updateTextCounter(counter, input.value.length);
 }
 
@@ -52,7 +55,7 @@ function initFreemasonLabelToggle() {
   });
 }
 
-function initFreemasonDecryptButtons() {
+function initFreemasonDecryptButtons(cipher) {
   const keyboard = document.querySelector("[data-freemason-keyboard]");
   const output = document.querySelector("[data-decrypt-output]");
   const counter = document.querySelector("[data-decrypt-count]");
@@ -61,14 +64,14 @@ function initFreemasonDecryptButtons() {
 
   keyboard.innerHTML = "";
 
-  FREEMASON_LETTERS.forEach((letter) => {
+  cipher.FREEMASON_LETTERS.forEach((letter) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "freemason-button";
     button.dataset.letter = letter;
-    button.setAttribute("aria-label", `Symbol ${letter}`);
+    button.setAttribute("aria-label", "Symbol " + letter);
 
-    const symbol = createFreemasonSymbol(letter);
+    const symbol = createFreemasonSymbol(letter, cipher);
     const label = document.createElement("span");
     label.className = "freemason-button-label";
     label.textContent = letter;
@@ -114,7 +117,7 @@ function makeActionButton(label, action) {
   return button;
 }
 
-function renderFreemasonText(text, output) {
+function renderFreemasonText(text, output, cipher) {
   output.innerHTML = "";
 
   if (!text.trim()) {
@@ -125,9 +128,9 @@ function renderFreemasonText(text, output) {
 
   output.classList.remove("is-empty");
 
-  normalizeFreemasonText(text).forEach((character) => {
-    if (isFreemasonLetter(character)) {
-      output.appendChild(createFreemasonSymbol(character));
+  cipher.normalizeFreemasonText(text).forEach((character) => {
+    if (cipher.isFreemasonLetter(character)) {
+      output.appendChild(createFreemasonSymbol(character, cipher));
       return;
     }
 
@@ -153,15 +156,17 @@ function renderFreemasonText(text, output) {
   });
 }
 
-function createFreemasonSymbol(letter) {
+function createFreemasonSymbol(letter, cipher) {
   const symbol = document.createElement("span");
-  symbol.className = `freemason-symbol ${getFreemasonSymbolClass(letter)}`;
+  symbol.className = "freemason-symbol " + cipher.getFreemasonSymbolClass(letter);
   symbol.setAttribute("aria-label", letter);
   return symbol;
 }
 
 function updateTextCounter(counter, amount) {
   if (counter) {
-    counter.textContent = `${amount} Zeichen`;
+    counter.textContent = amount + " Zeichen";
   }
 }
+
+window.KryptoTool.ui.initFreemasonView = initFreemasonView;
