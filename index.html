@@ -29,41 +29,86 @@
     </nav>
 
     <main class="station-frame">
-      <aside class="dropdown-column left-column" aria-label="Verfahren und Werkzeuge">
-        <section class="side-dropdown left-dropdown is-open">
-          <button class="dropdown-trigger" type="button" data-dropdown-trigger="procedures" aria-expanded="true">
-            <span>▱</span>
-            Verfahren
-            <span class="dropdown-arrow">⌃</span>
-          </button>
-
-          <div class="dropdown-panel" data-dropdown-panel="procedures">
-            <section class="nav-group">
-              <h2>Textgeheimschriften</h2>
-              <button class="tool-link is-active" type="button"><span>Caesar</span></button>
-              <button class="tool-link" type="button"><span>Vigenère</span></button>
-              <button class="tool-link" type="button"><span>Substitution</span></button>
-            </section>
-
-            <section class="nav-group">
-              <h2>Symbolgeheimschriften</h2>
-              <button class="tool-link" type="button"><span>Freimaurer</span></button>
-              <button class="tool-link" type="button"><span>Gnomisch</span></button>
-              <button class="tool-link" type="button"><span>Polybius</span></button>
-              <button class="tool-link" type="button"><span>Pigpen</span></button>
-            </section>
-
-            <section class="nav-group">
-              <h2>Analysewerkzeuge</h2>
-              <button class="tool-link" type="button"><span>Häufigkeitsanalyse</span></button>
-              <button class="tool-link" type="button"><span>Caesar-Knacker</span></button>
-              <button class="tool-link" type="button"><span>Kryptoanalyse</span></button>
-            </section>
-          </div>
-        </section>
-      </aside>
-
       <section class="workspace" aria-label="Arbeitsbereich">
+        <div class="dropdown-row" aria-label="Zusatzbereiche">
+          <section class="side-dropdown left-dropdown" aria-label="Verfahren und Werkzeuge">
+            <button class="dropdown-trigger" type="button" data-dropdown-trigger="procedures" aria-expanded="false">
+              <span>▱</span>
+              Verfahren
+              <span class="dropdown-arrow">⌄</span>
+            </button>
+
+            <div class="dropdown-panel" data-dropdown-panel="procedures">
+              <section class="nav-group">
+                <h2>Textgeheimschriften</h2>
+                <button class="tool-link is-active" type="button"><span>Caesar</span></button>
+                <button class="tool-link" type="button"><span>Vigenère</span></button>
+                <button class="tool-link" type="button"><span>Substitution</span></button>
+              </section>
+
+              <section class="nav-group">
+                <h2>Symbolgeheimschriften</h2>
+                <button class="tool-link" type="button"><span>Freimaurer</span></button>
+                <button class="tool-link" type="button"><span>Gnomisch</span></button>
+                <button class="tool-link" type="button"><span>Polybius</span></button>
+                <button class="tool-link" type="button"><span>Pigpen</span></button>
+              </section>
+
+              <section class="nav-group">
+                <h2>Analysewerkzeuge</h2>
+                <button class="tool-link" type="button"><span>Häufigkeitsanalyse</span></button>
+                <button class="tool-link" type="button"><span>Caesar-Knacker</span></button>
+                <button class="tool-link" type="button"><span>Kryptoanalyse</span></button>
+              </section>
+            </div>
+          </section>
+
+          <section class="side-dropdown right-dropdown" aria-label="Informationen">
+            <button class="dropdown-trigger" type="button" data-dropdown-trigger="infos" aria-expanded="false">
+              <span>▱</span>
+              Infos
+              <span class="dropdown-arrow">⌄</span>
+            </button>
+
+            <div class="dropdown-panel info-panel" data-dropdown-panel="infos">
+              <article class="card info-card">
+                <h2>Verfahrensinfo</h2>
+                <h3>Caesar-Verschlüsselung</h3>
+                <p>Bei der Caesar-Verschlüsselung wird jeder Buchstabe im Alphabet um gleich viele Stellen verschoben.</p>
+                <p>Der Schlüssel gibt an, wie weit verschoben wird. Bei Schlüssel 3 wird aus A der Buchstabe D.</p>
+                <div class="example-line">
+                  <span>Klartext:</span>
+                  <code>A B C D E F … X Y Z</code>
+                </div>
+                <div class="example-line accent">
+                  <span>Geheim:</span>
+                  <code>D E F G H I … A B C</code>
+                </div>
+              </article>
+
+              <article class="card help-card">
+                <h2>Schnellhilfe</h2>
+                <ol>
+                  <li>Wähle links ein Verfahren.</li>
+                  <li>Gib deinen Text in der Mitte ein.</li>
+                  <li>Stelle den Schlüssel ein.</li>
+                  <li>Lies unten das Ergebnis ab.</li>
+                </ol>
+              </article>
+
+              <article class="card status-card">
+                <h2>Aktuelle Einstellungen</h2>
+                <dl>
+                  <div><dt>Verfahren</dt><dd>Caesar</dd></div>
+                  <div><dt>Modus</dt><dd>Verschlüsseln</dd></div>
+                  <div><dt>Schlüssel</dt><dd>3</dd></div>
+                  <div><dt>Alphabet</dt><dd>A–Z (26)</dd></div>
+                </dl>
+              </article>
+            </div>
+          </section>
+        </div>
+
         <div class="mode-switch card" aria-label="Modus wählen">
           <span class="mode-label">Modus</span>
           <button class="mode-option is-active" type="button" data-mode-button="encrypt">Verschlüsseln</button>
@@ -152,59 +197,12 @@
           </article>
         </section>
       </section>
-
-      <aside class="dropdown-column right-column" aria-label="Informationen">
-        <section class="side-dropdown right-dropdown is-open">
-          <button class="dropdown-trigger" type="button" data-dropdown-trigger="infos" aria-expanded="true">
-            <span>▱</span>
-            Infos
-            <span class="dropdown-arrow">⌃</span>
-          </button>
-
-          <div class="dropdown-panel info-panel" data-dropdown-panel="infos">
-            <article class="card info-card">
-              <h2>Verfahrensinfo</h2>
-              <h3>Caesar-Verschlüsselung</h3>
-              <p>Bei der Caesar-Verschlüsselung wird jeder Buchstabe im Alphabet um gleich viele Stellen verschoben.</p>
-              <p>Der Schlüssel gibt an, wie weit verschoben wird. Bei Schlüssel 3 wird aus A der Buchstabe D.</p>
-              <div class="example-line">
-                <span>Klartext:</span>
-                <code>A B C D E F … X Y Z</code>
-              </div>
-              <div class="example-line accent">
-                <span>Geheim:</span>
-                <code>D E F G H I … A B C</code>
-              </div>
-            </article>
-
-            <article class="card help-card">
-              <h2>Schnellhilfe</h2>
-              <ol>
-                <li>Wähle links ein Verfahren.</li>
-                <li>Gib deinen Text in der Mitte ein.</li>
-                <li>Stelle den Schlüssel ein.</li>
-                <li>Lies unten das Ergebnis ab.</li>
-              </ol>
-            </article>
-
-            <article class="card status-card">
-              <h2>Aktuelle Einstellungen</h2>
-              <dl>
-                <div><dt>Verfahren</dt><dd>Caesar</dd></div>
-                <div><dt>Modus</dt><dd>Verschlüsseln</dd></div>
-                <div><dt>Schlüssel</dt><dd>3</dd></div>
-                <div><dt>Alphabet</dt><dd>A–Z (26)</dd></div>
-              </dl>
-            </article>
-          </div>
-        </section>
-      </aside>
     </main>
 
     <footer class="station-footer">
       <span>Kryptoanalyse-Station</span>
-      <span>v0.1.4</span>
-      <span>Kompakter Dropdown-Prototyp</span>
+      <span>v0.1.5</span>
+      <span>Overlay-Dropdown-Prototyp</span>
       <span>Keine echten Funktionen</span>
     </footer>
   </div>
