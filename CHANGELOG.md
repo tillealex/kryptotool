@@ -2,6 +2,26 @@
 
 Alle wichtigen Änderungen an diesem Projekt werden hier dokumentiert.
 
+## 0.1.5 - Overlay-Dropdown-Prototyp
+
+### Neu
+
+- Dropdowns folgen jetzt der gewünschten kompakten Variante aus der Bildreferenz.
+- Im Grundzustand sind nur die Buttons `Verfahren` und `Infos` sichtbar.
+- Beim Klick gleiten die Dropdown-Menüs fließend nach unten auf.
+- Die geöffneten Dropdowns liegen als Overlay über den unteren Boxen, statt den Arbeitsbereich nach unten zu schieben.
+
+### Geändert
+
+- Die seitlichen festen Spalten wurden entfernt.
+- Verfahren und Infos sitzen nun oberhalb der zentralen Arbeitsbox in einer kompakten Bedienleiste.
+- Der zentrale Arbeitsbereich bleibt in Position und wird von geöffneten Menüs überlagert.
+
+### Hinweis
+
+- Diese Variante entspricht stärker der kompakten Mockup-Sequenz: geschlossen → Verfahren geöffnet → Infos geöffnet.
+- Die kryptographischen Funktionen sind weiterhin Platzhalter.
+
 ## 0.1.4 - Kompakter Dropdown-Prototyp
 
 ### Neu
