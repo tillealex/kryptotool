@@ -24,8 +24,20 @@
     </header>
 
     <nav class="main-tabs" role="tablist" aria-label="Hauptbereiche">
-      <button class="main-tab is-active" type="button">▣ Verschlüsseln</button>
-      <button class="main-tab" type="button">▢ Entschlüsseln</button>
+      <button class="main-tab is-active" type="button">
+        <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="6" y="10" width="12" height="10" rx="2"></rect>
+          <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+        </svg>
+        Verschlüsseln
+      </button>
+      <button class="main-tab" type="button">
+        <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="6" y="10" width="12" height="10" rx="2"></rect>
+          <path d="M8 10V7a4 4 0 0 1 7.2-2.4"></path>
+        </svg>
+        Entschlüsseln
+      </button>
     </nav>
 
     <main class="station-frame">
@@ -33,7 +45,11 @@
         <div class="dropdown-row" aria-label="Zusatzbereiche">
           <section class="side-dropdown left-dropdown" aria-label="Verfahren und Werkzeuge">
             <button class="dropdown-trigger" type="button" data-dropdown-trigger="procedures" aria-expanded="false">
-              <span>▱</span>
+              <svg class="ui-icon stack-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3 21 7.5 12 12 3 7.5 12 3Z"></path>
+                <path d="M21 12 12 16.5 3 12"></path>
+                <path d="M21 16.5 12 21 3 16.5"></path>
+              </svg>
               Verfahren
               <span class="dropdown-arrow">⌄</span>
             </button>
@@ -65,7 +81,11 @@
 
           <section class="side-dropdown right-dropdown" aria-label="Informationen">
             <button class="dropdown-trigger" type="button" data-dropdown-trigger="infos" aria-expanded="false">
-              <span>▱</span>
+              <svg class="ui-icon stack-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3 21 7.5 12 12 3 7.5 12 3Z"></path>
+                <path d="M21 12 12 16.5 3 12"></path>
+                <path d="M21 16.5 12 21 3 16.5"></path>
+              </svg>
               Infos
               <span class="dropdown-arrow">⌄</span>
             </button>
@@ -102,8 +122,20 @@
 
         <div class="mode-switch card" aria-label="Modus wählen">
           <span class="mode-label">Modus</span>
-          <button class="mode-option is-active" type="button" data-mode-button="encrypt">Verschlüsseln</button>
-          <button class="mode-option" type="button" data-mode-button="decrypt">Entschlüsseln</button>
+          <button class="mode-option is-active" type="button" data-mode-button="encrypt">
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="6" y="10" width="12" height="10" rx="2"></rect>
+              <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+            </svg>
+            Verschlüsseln
+          </button>
+          <button class="mode-option" type="button" data-mode-button="decrypt">
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="6" y="10" width="12" height="10" rx="2"></rect>
+              <path d="M8 10V7a4 4 0 0 1 7.2-2.4"></path>
+            </svg>
+            Entschlüsseln
+          </button>
         </div>
 
         <section class="flow-panel" data-mode-panel="encrypt">
@@ -154,6 +186,13 @@
               <strong>Freimaurer-Code lesen</strong>
               <p>Wähle unten das passende Symbol. Jeder Klick fügt den zugehörigen Buchstaben zum Klartext hinzu.</p>
             </div>
+            <div class="setting-row full">
+              <label>Hilfen</label>
+              <label class="checkbox-control">
+                <input type="checkbox" data-toggle-symbol-labels>
+                <span>Buchstaben unter Symbolen anzeigen</span>
+              </label>
+            </div>
           </article>
 
           <article class="card input-card flow-card wide-text-card">
@@ -177,9 +216,9 @@
 
     <footer class="station-footer">
       <span>Kryptoanalyse-Station</span>
-      <span>v0.2.1</span>
+      <span>v0.2.2</span>
       <span>Freimaurer-Code</span>
-      <span>invertierbare Bildausgabe</span>
+      <span>SVG-Icons und Symbolhilfen</span>
     </footer>
   </div>
 
