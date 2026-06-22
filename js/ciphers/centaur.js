@@ -70,11 +70,11 @@ window.KryptoTool.ciphers = window.KryptoTool.ciphers || {};
     V: makeSvg("V", `${barH(22,30,56,10)}${triDown(50,52,10)}`),
 
     // Vertikale Stammformen
-    C: makeSvg("C", `${barV(30,20,40,10)}${triRight(52,28,10)}${triRight(52,52,10)}`),
-    F: makeSvg("F", `${barV(30,20,40,10)}${triRight(52,30,10)}${triRight(52,50,10)}`),
+    C: makeSvg("C", `${barV(30,14,70,10)}${triRight(52,30,10)}${triRight(52,58,10)}`),
+    F: makeSvg("F", `${barV(30,18,70,10)}${triRight(52,30,10)}${triRight(52,56,10)}`),
     H: makeSvg("H", `${barV(36,20,52,10)}${triRight(58,34,9)}`),
     I: makeSvg("I", `${barV(45,20,60,10)}`),
-    J: makeSvg("J", `${barV(48,20,42,10)}${triLeft(30,58,9)}`),
+    J: makeSvg("J", `${barV(48,14,72,10)}${triLeft(43,74,7)}`),
     L: makeSvg("L", `${barV(32,20,48,10)}${triRight(52,62,9)}`),
     M: makeSvg("M", `${barV(24,20,42,10)}${barV(40,20,42,10)}${barV(56,20,42,10)}`),
     P: makeSvg("P", `${barV(32,20,48,10)}${triRight(56,40,10)}`),
@@ -83,7 +83,7 @@ window.KryptoTool.ciphers = window.KryptoTool.ciphers || {};
     U: makeSvg("U", `${barV(26,20,44,10)}${barV(54,20,44,10)}${barH(32,60,22,10)}`),
 
     // Eck- und Winkelformen
-    D: makeSvg("D", `${barH(18,24,44,10)}${barH(18,40,44,10)}${barH(18,56,44,10)}${barV(58,22,42,10)}${triRight(22,40,10)}`),
+    D: makeSvg("D", `${barH(18,26,42,10)}${barH(18,60,42,10)}${triRight(62,47,8)}${barV(74,22,56,10)}`),
     K: makeSvg("K", `${barDiag(32,40,58,18)}${barDiag(32,40,58,62)}${barH(22,35,14,10)}`),
     R: makeSvg("R", `${barV(28,20,48,10)}${barH(28,22,34,10)}`),
 
