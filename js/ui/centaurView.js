@@ -25,7 +25,7 @@ window.KryptoTool.ui = window.KryptoTool.ui || {};
       const description = toolBlocks[0].querySelector("p");
       if (title) title.textContent = "Zentaurische Schrift";
       if (description) {
-        description.textContent = "Buchstaben werden als kantige Zentauren-Zeichen dargestellt. Die Zeichen sind als SVGs nachgezeichnet und bleiben dadurch in jeder Größe scharf.";
+        description.textContent = "Zentaurische Schrift nach Eoin Colfers Roman \"Artemis Fowl: Die Verschwörung\". Die Zeichen sind hier als SVGs umgesetzt.";
       }
     }
 
@@ -37,6 +37,22 @@ window.KryptoTool.ui = window.KryptoTool.ui || {};
         description.textContent = "Wähle unten das passende Zentauren-Zeichen. Jeder Klick fügt den zugehörigen Buchstaben zum Klartext hinzu.";
       }
     }
+
+    const infoTitle = document.querySelector(".info-card h3");
+    const infoParagraphs = document.querySelectorAll(".info-card p");
+    if (infoTitle) infoTitle.textContent = "Zentaurische Schrift";
+    if (infoParagraphs[0]) {
+      infoParagraphs[0].textContent = "Zentaurische Schrift nach Eoin Colfers Roman \"Artemis Fowl: Die Verschwörung\".";
+    }
+    if (infoParagraphs[1]) {
+      infoParagraphs[1].textContent = "In diesem Tool wird jeder Buchstabe durch ein eigenes kantiges SVG-Zeichen dargestellt. Die SVGs sind später gut austauschbar, wenn die Zeichen noch genauer an die Vorlage angepasst werden.";
+    }
+
+    const statusValues = document.querySelectorAll(".status-card dd");
+    if (statusValues[0]) statusValues[0].textContent = "Zentaurische Schrift";
+    if (statusValues[1]) statusValues[1].textContent = "Symbolschrift";
+    if (statusValues[2]) statusValues[2].textContent = "weiß auf schwarz";
+    if (statusValues[3]) statusValues[3].textContent = "A–Z und Bindestrich";
   }
 
   function createGlyphElement(item, showLabel) {
@@ -96,6 +112,8 @@ window.KryptoTool.ui = window.KryptoTool.ui || {};
     if (count) {
       count.textContent = `${text.length} Zeichen`;
     }
+
+    renderAlphabetPanel();
   }
 
   function updateDecryptOutput() {
@@ -152,13 +170,71 @@ window.KryptoTool.ui = window.KryptoTool.ui || {};
     });
   }
 
+  function ensureAlphabetPanel() {
+    const encryptPanel = document.querySelector('[data-mode-panel="encrypt"]');
+    const outputCard = encryptPanel?.querySelector(".output-card");
+    if (!encryptPanel || !outputCard) return null;
+
+    let card = encryptPanel.querySelector("[data-alphabet-card]");
+    if (card) return card;
+
+    card = document.createElement("article");
+    card.className = "card output-card flow-card wide-text-card alphabet-card";
+    card.dataset.alphabetCard = "true";
+    card.innerHTML = `
+      <div class="card-heading">
+        <h2>4. Alphabet als Bild</h2>
+        <span data-alphabet-mode-label>weiß auf schwarz</span>
+      </div>
+      <div class="output-placeholder freemason-output freemason-image alphabet-image" data-alphabet-output></div>
+    `;
+    outputCard.after(card);
+    return card;
+  }
+
+  function renderAlphabetPanel() {
+    const cipher = window.KryptoTool?.ciphers?.centaur;
+    const card = ensureAlphabetPanel();
+    const alphabetOutput = card?.querySelector("[data-alphabet-output]");
+    const modeLabel = card?.querySelector("[data-alphabet-mode-label]");
+    const invert = document.querySelector(selectors.invert);
+    if (!cipher || !alphabetOutput) return;
+
+    alphabetOutput.innerHTML = "";
+    alphabetOutput.classList.remove("is-empty");
+    alphabetOutput.classList.toggle("is-inverted", !!invert?.checked);
+
+    cipher.getPalette().forEach((glyph) => {
+      const item = document.createElement("span");
+      item.className = "alphabet-symbol-item centaur-glyph-item";
+
+      const symbol = document.createElement("span");
+      symbol.className = "centaur-glyph";
+      symbol.innerHTML = glyph.svg;
+
+      const label = document.createElement("span");
+      label.className = "alphabet-symbol-label";
+      label.textContent = glyph.char;
+
+      item.append(symbol, label);
+      alphabetOutput.appendChild(item);
+    });
+
+    if (modeLabel) {
+      modeLabel.textContent = invert?.checked ? "schwarz auf weiß" : "weiß auf schwarz";
+    }
+  }
+
   function bindControls() {
     const input = document.querySelector(selectors.input);
     const invert = document.querySelector(selectors.invert);
     const labelToggle = document.querySelector(selectors.labelToggle);
 
     input?.addEventListener("input", updateEncryptOutput);
-    invert?.addEventListener("change", updateEncryptOutput);
+    invert?.addEventListener("change", () => {
+      updateEncryptOutput();
+      renderAlphabetPanel();
+    });
     labelToggle?.addEventListener("change", () => {
       updateEncryptOutput();
       renderKeyboard();
@@ -210,6 +286,24 @@ window.KryptoTool.ui = window.KryptoTool.ui || {};
         width: 2.5rem;
         height: 2.5rem;
       }
+
+      .alphabet-image {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(4.4rem, 1fr));
+        gap: 0.75rem;
+        align-items: stretch;
+      }
+
+      .alphabet-symbol-item {
+        min-height: 4.8rem;
+        padding: 0.3rem;
+      }
+
+      .alphabet-symbol-label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
     `;
     document.head.appendChild(style);
   }
@@ -227,6 +321,7 @@ window.KryptoTool.ui = window.KryptoTool.ui || {};
     renderKeyboard();
     updateEncryptOutput();
     updateDecryptOutput();
+    renderAlphabetPanel();
 
     return true;
   }
