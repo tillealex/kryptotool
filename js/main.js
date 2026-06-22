@@ -1,12 +1,13 @@
-import { initFreemasonView } from "./ui/freemasonView.js";
-
 initApp();
 
-function initApp() {
+async function initApp() {
   initModePlaceholder();
   initDropdownPanels();
   initToolSelection();
+
+  const { initFreemasonView } = await import("./ui/freemasonView.js");
   initFreemasonView();
+
   console.info("Kryptotool gestartet: Freimaurer-Code als Modul aktiv");
 }
 
