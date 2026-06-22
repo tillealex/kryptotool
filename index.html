@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kryptotool</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Geheimschriften-Werkstatt</p>
+      <h1>Kryptotool</h1>
+      <p class="subtitle">Verschlüsseln, entschlüsseln und Kryptoanalyse für den Unterricht.</p>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="panel intro-panel">
+      <h2>Projektstart</h2>
+      <p>
+        Diese Oberfläche ist das Grundgerüst für die spätere Zusammenführung deiner Kryptographie-Tools.
+        Die eigentlichen Werkzeuge werden Schritt für Schritt als Module ergänzt.
+      </p>
+    </section>
+
+    <section class="workspace-grid">
+      <aside class="panel tool-panel">
+        <h2>Bereiche</h2>
+        <button class="tab-button is-active" type="button">Verschlüsseln</button>
+        <button class="tab-button" type="button">Entschlüsseln</button>
+        <button class="tab-button" type="button">Kryptoanalyse</button>
+      </aside>
+
+      <section class="panel work-panel">
+        <h2>Arbeitsbereich</h2>
+        <label for="inputText">Eingabe</label>
+        <textarea id="inputText" rows="8" placeholder="Hier später Klartext, Geheimtext oder Symbolfolgen eingeben …"></textarea>
+
+        <div class="placeholder-box">
+          <strong>Nächster Schritt:</strong>
+          Bestehende Tools in den Ordner <code>Dateivorlagen</code> hochladen und anschließend modular integrieren.
+        </div>
+      </section>
+
+      <section class="panel output-panel">
+        <h2>Ausgabe</h2>
+        <div id="output" class="output-box">Noch keine Ausgabe.</div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
